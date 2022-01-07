@@ -10,8 +10,8 @@ html {
   grid-template-rows: 2fr 1fr;
 }
 
-/* panel container */
-.container-panel {
+/* bathroom container */
+.container-bathroom {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
 }

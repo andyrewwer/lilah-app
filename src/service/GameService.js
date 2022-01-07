@@ -1,4 +1,4 @@
-import {loveBar, attentionBar, thirstBar} from '../components/panel/lila-meta/LilaMeta'
+import {loveBar, attentionBar, thirstBar} from '../components/bathroom/lila-meta/LilaMeta'
 
 export const maxTargetLila = 40;
 export const minTargetLila = 20;

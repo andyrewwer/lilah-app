@@ -1,11 +1,11 @@
-import './Panel.css';
+import './Bathroom.css';
 import React, { Component } from 'react'
 import Lila from './lila/Lila'
 import LilaMeta, {loveBar, attentionBar, thirstBar} from './lila-meta/LilaMeta'
 const { GameService } = require('../../service/GameService.js')
 
 
-export default class Panel extends Component {
+export default class Bathroom extends Component {
 // OPTIONS:
 /*
   1. EASY (just lila) and HARD (include brushing your teeth)

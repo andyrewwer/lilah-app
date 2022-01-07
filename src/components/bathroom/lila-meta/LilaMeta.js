@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import StatusBar from '../../util/status-bar/StatusBar'
 
 // TODO move to external configs
+// TODO make this more generic to allow more bars and maybe colors
   export const loveBar =
   {
     max: 100,
