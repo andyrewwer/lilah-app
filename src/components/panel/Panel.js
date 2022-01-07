@@ -32,7 +32,6 @@ export default class Panel extends Component {
     this.petLila = this.petLila.bind(this);
     this.ignoreLila = this.ignoreLila.bind(this);
     this.talkToLila = this.talkToLila.bind(this);
-    this.moveLila = this.moveLila.bind(this);
   }
 
   petLila() {
@@ -47,23 +46,11 @@ export default class Panel extends Component {
     this.gameService.talkToLila()
   }
 
-  moveLila(moveLeft) {
-    if (moveLeft && this.state.lilaPos > 1) {
-      this.setState({
-        lilaPos: this.state.lilaPos - 1
-      });
-    } else if (!moveLeft && this.state.lilaPos < 10) {
-      this.setState({
-        lilaPos: this.state.lilaPos + 1
-      })
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
         <div className="container-lila">
-          <Lila lilaPos={this.state.lilaPos} moveLilaCallback={this.moveLila}/>
+          <Lila lilaPos={this.state.lilaPos}/>
         </div>
         <div className="container-lila-meta">
           <LilaMeta  loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}

@@ -4,9 +4,10 @@
 
 .lila-container {
   display: grid;
-  grid-template-columns: repeat(10, minmax(var(--lila-size), 1fr));
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
+  grid-template-columns: calc(var(--lila-size) * 10));
+  grid-template-rows: 2fr 1fr;
+  grid-gap: 5px;
+  justify-items: left;
   align-items: center;
 }
 
@@ -16,6 +17,8 @@
   border-radius: 100%;
   background-color: #333;
   grid-row: 2;
+  transition: margin 0.5s ease-in-out;
+  /* margin-top: -50px; */
 }
 
 .sink {
@@ -23,6 +26,6 @@
   height: calc(var(--lila-size) * 2);
   border-radius: 100%;
   background-color: blue;
-  grid-row: 1 ;
-  grid-column: 3 / 5;
+  grid-row: 1;
+  margin-left: calc(var(--lila-size) * 2.5);
 }

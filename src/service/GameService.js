@@ -11,32 +11,32 @@ class GameService {
 
   petLila() {
     // Maybe only able to do this when she's within X number of squares of you?
-    this.loveCurrent += 5;
-    this.attentionSeeked += 2;
+    this.loveCurrent += 4.5;
+    this.attentionSeeked += 1;
     if (this.loveCurrent > (loveBar.max * .9)) {
-      this.attentionSeeked += 2;
+      this.attentionSeeked += 1;
     }
-    if (this.attentionSeeked > attentionBar.max * .9) {
-      this.lilaPos += 0.5;
+    if (this.attentionSeeked > attentionBar.targetThreshold) {
+      this.lilaPos += 1;
     }
   }
 
 
   ignoreLila() {
-    this.attentionSeeked -= 3;
-    this.lilaPos -= 1;
+    this.attentionSeeked -= 3.5;
+    this.loveCurrent -= 0.5;
+    this.lilaPos -= 4;
   }
 
   talkToLila() {
-    this.lilaPos += 1;
-    this.attentionSeeked += 5;
-    console.log('talking to Lila GAME SERVICE')
-
+    this.attentionSeeked += 3.5;
+    this.loveCurrent += 0.5;
+    this.lilaPos += 3.5;
   }
 
   regularUpdate() {
-    this.attentionSeeked -= .5;
-    this.loveCurrent -= .25;
+    this.attentionSeeked -= .2;
+    this.loveCurrent -= .15;
 
     if (this.loveCurrent < loveBar.loseThreshold) {
       // you lose
@@ -45,17 +45,16 @@ class GameService {
       this.attentionSeeked -= 0.1
     }
     if (this.loveCurrent > loveBar.targetThreshold && this.attentionSeeked < attentionBar.max/2) {
-      this.attentionSeeked += .9
+      this.attentionSeeked += .4
     }
     if (this.attentionSeeked < attentionBar.loseThreshold) {
-      this.lilaPos -= 0.5
+      this.lilaPos -= 1.8
     }
     if (this.attentionSeeked > attentionBar.targetThreshold) {
-      this.lilaPos += 0.5
+      this.lilaPos += 1.8
     }
 
     this.checkAndResetToMax();
-    console.log(new Date())
     return this.getState();
   }
 
@@ -76,8 +75,8 @@ class GameService {
     if (this.attentionSeeked < 0) {
       this.attentionSeeked = 0;
     }
-    if (this.lilaPos > 10) {
-      this.lilaPos = 10;
+    if (this.lilaPos > 100) {
+      this.lilaPos = 100;
     }
     if (this.lilaPos < 0) {
       this.lilaPos = 0;
