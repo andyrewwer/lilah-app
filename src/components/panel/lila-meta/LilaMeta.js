@@ -14,9 +14,9 @@ import StatusBar from '../../util/status-bar/StatusBar'
   export const attentionBar =
   {
     max: 100,
-    loseThreshold: 40,
+    loseThreshold: 50,
     targetPosition: 'middle',
-    targetThreshold: 60,
+    targetThreshold: 70,
     loseIsYellow: true,
     label: 'Attention seeking'
   }
@@ -24,7 +24,7 @@ import StatusBar from '../../util/status-bar/StatusBar'
   export const thirstBar =
   {
     max: 100,
-    loseThreshold: 90,
+    loseThreshold: 0,
     targetPosition: 'middle',
     targetThreshold: 90,
     loseIsYellow: true,
