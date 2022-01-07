@@ -1,0 +1,28 @@
+:root {
+  --lila-size: 45px;
+}
+
+.lila-container {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(var(--lila-size), 1fr));
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.lila {
+  width: var(--lila-size);
+  height: var(--lila-size);
+  border-radius: 100%;
+  background-color: #333;
+  grid-row: 2;
+}
+
+.sink {
+  width: calc(var(--lila-size) * 2);
+  height: calc(var(--lila-size) * 2);
+  border-radius: 100%;
+  background-color: blue;
+  grid-row: 1 ;
+  grid-column: 3 / 5;
+}
