@@ -14,9 +14,9 @@ import StatusBar from '../../util/status-bar/StatusBar'
   export const attentionBar =
   {
     max: 100,
-    loseThreshold: 30,
+    loseThreshold: 40,
     targetPosition: 'middle',
-    targetThreshold: 70,
+    targetThreshold: 60,
     loseIsYellow: true,
     label: 'Attention seeking'
   }

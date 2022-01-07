@@ -20,6 +20,7 @@ export default class Panel extends Component {
       this.setState(this.gameService.regularUpdate());
     }, 500);
   }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -50,7 +51,7 @@ export default class Panel extends Component {
     return (
       <React.Fragment>
         <div className="container-lila">
-          <Lila lilaPos={this.state.lilaPos}/>
+          <Lila lilaPos={this.state.lilaPos} gameService={this.gameService} />
         </div>
         <div className="container-lila-meta">
           <LilaMeta  loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}

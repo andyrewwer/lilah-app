@@ -9,7 +9,7 @@ export default class Lila extends Component {
 
 
   render() {
-    let marginTop = this.props.lilaPos > 19 && this.props.lilaPos < 40 ? '-60px' : '0px'
+    let marginTop = this.props.gameService.lilaInTargetPosition() ? '-60px' : '0px';
     return (
       <React.Fragment>
         <div className="lila-container">

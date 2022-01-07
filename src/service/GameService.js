@@ -1,6 +1,10 @@
 import {loveBar, attentionBar, thirstBar} from '../components/panel/lila-meta/LilaMeta'
 
+export const maxTargetLila = 40;
+export const minTargetLila = 20;
+
 class GameService {
+
 
   constructor(loveCurrent, attentionSeeked, thirstQuenched, lilaPos) {
     this.loveCurrent = loveCurrent;
@@ -21,7 +25,6 @@ class GameService {
     }
   }
 
-
   ignoreLila() {
     this.attentionSeeked -= 3.5;
     this.loveCurrent -= 0.5;
@@ -35,17 +38,27 @@ class GameService {
   }
 
   regularUpdate() {
-    this.attentionSeeked -= .2;
-    this.loveCurrent -= .15;
+    this.attentionSeeked -= .35;
+    this.loveCurrent -= .2;
 
     if (this.loveCurrent < loveBar.loseThreshold) {
       // you lose
     }
-    if (this.loveCurrent > loveBar.targetThreshold && this.attentionSeeked > attentionBar.max/2) {
-      this.attentionSeeked -= 0.1
-    }
-    if (this.loveCurrent > loveBar.targetThreshold && this.attentionSeeked < attentionBar.max/2) {
-      this.attentionSeeked += .4
+    if (this.loveCurrent > loveBar.targetThreshold) {
+      if (this.attentionSeeked > attentionBar.max/2) {
+        this.attentionSeeked -= 0.1
+      }
+      if (this.attentionSeeked < attentionBar.max/2) {
+        this.attentionSeeked += .4
+      }
+      if (this.attentionSeeked > attentionBar.loseThreshold && this.attentionSeeked < attentionBar.targetThreshold) {
+        if (this.lilaPos >= (maxTargetLila+minTargetLila)/2 ) {
+          this.lilaPos -= 0.5
+        }
+        if (this.lilaPos <= (maxTargetLila+minTargetLila)/2) {
+          this.lilaPos += 0.5
+        }
+      }
     }
     if (this.attentionSeeked < attentionBar.loseThreshold) {
       this.lilaPos -= 1.8
@@ -81,6 +94,10 @@ class GameService {
     if (this.lilaPos < 0) {
       this.lilaPos = 0;
     }
+  }
+
+  lilaInTargetPosition() {
+    return this.lilaPos > minTargetLila && this.lilaPos < maxTargetLila;
   }
 
   getState() {
