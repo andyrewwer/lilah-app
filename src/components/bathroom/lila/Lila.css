@@ -1,31 +1,36 @@
 :root {
-  --lila-size: 45px;
+  --lila-size: 50px;
+  --background-colour: #BADA55;
 }
 
+/* TODO FIGURE OUT WHY BG IS SHRINKING AND EXPANDING */
 .lila-container {
   display: grid;
+  width: calc(var(--lila-size) * 10));
   grid-template-columns: calc(var(--lila-size) * 10));
   grid-template-rows: 2fr 1fr;
   grid-gap: 5px;
   justify-items: left;
   align-items: center;
+  background-color: var(--background-colour);
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .lila {
   width: var(--lila-size);
   height: var(--lila-size);
-  border-radius: 100%;
-  background-color: #333;
   grid-row: 2;
   transition: margin 0.5s ease-in-out;
-  /* margin-top: -50px; */
 }
 
 .sink {
   width: calc(var(--lila-size) * 2);
   height: calc(var(--lila-size) * 2);
   border-radius: 100%;
-  background-color: blue;
+  background-color: black;
   grid-row: 1;
   margin-left: calc(var(--lila-size) * 2.5);
+  box-shadow: inset 0px 0px 0px 15px white, inset 0px 0px 0px 38px blue;
+  border: 1px solid #eee;
 }

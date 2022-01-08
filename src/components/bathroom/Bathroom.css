@@ -1,5 +1,6 @@
 .container-lila {
   grid-column: 2;
+  align-self: center; 
 }
 
 .container-lila-meta {

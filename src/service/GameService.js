@@ -1,7 +1,7 @@
 import {loveBar, attentionBar, thirstBar} from '../components/bathroom/lila-meta/LilaMeta'
 
-export const maxTargetLila = 40;
-export const minTargetLila = 20;
+export const maxTargetLila = 42;
+export const minTargetLila = 28;
 
 class GameService {
 
@@ -15,8 +15,9 @@ class GameService {
 
   petLila() {
     // Maybe only able to do this when she's within X number of squares of you?
-    this.loveCurrent += 4.5;
+    this.loveCurrent += 4;
     this.attentionSeeked += 1;
+    this.lilaPos += 1
     if (this.loveCurrent > (loveBar.max * .9)) {
       this.attentionSeeked += 1;
     }
@@ -26,8 +27,8 @@ class GameService {
   }
 
   ignoreLila() {
-    this.attentionSeeked -= 3.5;
-    this.loveCurrent -= 0.5;
+    this.attentionSeeked -= 4.5;
+    this.loveCurrent -= 5;
     this.lilaPos -= 4;
   }
 
@@ -39,7 +40,7 @@ class GameService {
 
   regularUpdate() {
     this.attentionSeeked -= .35;
-    this.loveCurrent -= .2;
+    this.loveCurrent -= .35;
 
     if (this.loveCurrent < loveBar.loseThreshold) {
       // you lose
@@ -49,7 +50,7 @@ class GameService {
         this.attentionSeeked -= 0.1
       }
       if (this.attentionSeeked < attentionBar.max/2) {
-        this.attentionSeeked += .4
+        this.attentionSeeked += .45
       }
       if (this.attentionSeeked > attentionBar.loseThreshold && this.attentionSeeked < attentionBar.targetThreshold) {
         if (this.lilaPos >= (maxTargetLila+minTargetLila)/2 ) {
