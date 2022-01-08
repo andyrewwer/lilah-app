@@ -1,6 +1,8 @@
 .container-lila {
   grid-column: 2;
-  align-self: center; 
+  align-self: center;
+  width: 500px;
+  height: 175px;
 }
 
 .container-lila-meta {

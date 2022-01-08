@@ -27,7 +27,7 @@ export default class Bathroom extends Component {
 
   constructor() {
     super();
-    this.gameService = new GameService(50, 50, 5, 80);
+    this.gameService = new GameService(50, 50, 5, 60);
     this.state = this.gameService.getState();
 
     this.petLila = this.petLila.bind(this);

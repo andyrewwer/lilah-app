@@ -1,7 +1,7 @@
 import {loveBar, attentionBar, thirstBar} from '../components/bathroom/lila-meta/LilaMeta'
 
-export const maxTargetLila = 42;
-export const minTargetLila = 28;
+export const maxTargetLila = 44;
+export const minTargetLila = 26;
 
 class GameService {
 

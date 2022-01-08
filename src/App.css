@@ -13,7 +13,8 @@ html {
 /* bathroom container */
 .container-bathroom {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 500px 1fr;
+  grid-gap: 5px;
 }
 
 .container-footer {
