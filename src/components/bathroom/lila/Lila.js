@@ -14,17 +14,17 @@ export default class Lila extends Component {
     return (
       <React.Fragment>
         <div className="lila-container">
-          <div class="counter">
+          <div className="counter">
             <div className="sink">
               <div className="sink-hole"></div>
-              <div class="faucet"></div>
-              <div class="knobs"></div>
+              <div className="faucet"></div>
+              <div className="knobs"></div>
             </div>
           </div>
-          <div class="toilet">
-            <div class="toilet-seat"></div>
-            <div class="toilet-back">
-              <div class="toilet-handle"></div>
+          <div className="toilet">
+            <div className="toilet-seat"></div>
+            <div className="toilet-back">
+              <div className="toilet-handle"></div>
             </div>
           </div>
           <div className="lila" style={{marginLeft: (this.props.lilaPos * 4.5) + 'px', marginTop: marginTop}}>

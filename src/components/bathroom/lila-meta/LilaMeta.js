@@ -34,8 +34,6 @@ import StatusBar from '../../util/status-bar/StatusBar'
 
 
 export default class LilaMeta extends Component {
-  // TODO EVERY "TICK" love felt goes down etc
-
 
   constructor() {
     super();

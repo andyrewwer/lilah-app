@@ -15,9 +15,8 @@ class GameService {
 
   petLila() {
     // Maybe only able to do this when she's within X number of squares of you?
-    this.loveCurrent += 4;
-    this.attentionSeeked += 1;
-    this.lilaPos += 1
+    this.loveCurrent += 3;
+    this.attentionSeeked += 0.8;
     if (this.loveCurrent > (loveBar.max * .9)) {
       this.attentionSeeked += 1;
     }
@@ -27,18 +26,36 @@ class GameService {
   }
 
   ignoreLila() {
-    this.attentionSeeked -= 4.5;
-    this.loveCurrent -= 5;
-    this.lilaPos -= 4;
+    this.attentionSeeked -= 2;
+    this.loveCurrent -= 2;
+    this.lilaPos -= 1;
   }
 
   talkToLila() {
-    this.attentionSeeked += 3.5;
-    this.loveCurrent += 0.5;
-    this.lilaPos += 3.5;
+    this.attentionSeeked += 1.5;
+    this.loveCurrent += 1.5;
+    this.lilaPos += 2.5;
   }
 
   regularUpdate() {
+
+    this.updateAttentionLoveAndLila();
+    this.tryToDrinkWater();
+    this.checkAndResetToMax();
+
+    return this.getState();
+  }
+
+  tryToDrinkWater() {
+    if (this.lilaInTargetPosition() && this.loveCurrent >= loveBar.targetThreshold && this.attentionSeeked >= attentionBar.loseThreshold && this.attentionSeeked <= attentionBar.targetThreshold) {
+      this.thirstQuenched += 4;
+      if (this.thirstQuenched > thirstBar.targetThreshold) {
+        // you win
+      }
+    }
+  }
+
+  updateAttentionLoveAndLila() {
     this.attentionSeeked -= .35;
     this.loveCurrent -= .35;
 
@@ -46,18 +63,18 @@ class GameService {
       // you lose
     }
     if (this.loveCurrent > loveBar.targetThreshold) {
-      if (this.attentionSeeked > attentionBar.max/2) {
+      if (this.attentionSeeked > (attentionBar.loseThreshold + attentionBar.targetThreshold)/2) {
         this.attentionSeeked -= 0.1
       }
-      if (this.attentionSeeked < attentionBar.max/2) {
+      if (this.attentionSeeked < (attentionBar.loseThreshold + attentionBar.targetThreshold)/2) {
         this.attentionSeeked += .45
       }
       if (this.attentionSeeked > attentionBar.loseThreshold && this.attentionSeeked < attentionBar.targetThreshold) {
         if (this.lilaPos >= (maxTargetLila+minTargetLila)/2 ) {
-          this.lilaPos -= 0.5
+          this.lilaPos -= 0.9
         }
         if (this.lilaPos <= (maxTargetLila+minTargetLila)/2) {
-          this.lilaPos += 0.5
+          this.lilaPos += 0.9
         }
       }
     }
@@ -67,9 +84,6 @@ class GameService {
     if (this.attentionSeeked > attentionBar.targetThreshold) {
       this.lilaPos += 1.8
     }
-
-    this.checkAndResetToMax();
-    return this.getState();
   }
 
   checkAndResetToMax() {
