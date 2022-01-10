@@ -1,0 +1,22 @@
+.container-drink-water-game {
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  grid-template-rows: 1fr 175px 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 25px;
+}
+
+.container-bathroom {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.container-lilah-stats {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.container-lilah-actions {
+  grid-column: 3;
+  grid-row: 2;
+}

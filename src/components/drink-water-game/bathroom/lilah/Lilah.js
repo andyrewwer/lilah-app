@@ -1,19 +1,15 @@
-import './Lila.css';
+import './Lilah.css';
 import React, { Component } from 'react'
-const lila = require('../../../assets/lila-300.png');
 
-export default class Lila extends Component {
+const lilah = require('../../../../assets/lilah-300.png');
 
-  constructor() {
-    super();
-  }
-
+export default class Lilah extends Component {
 
   render() {
-    let marginTop = this.props.gameService.lilaInTargetPosition() ? '-100px' : '0px';
+    let marginTop = this.props.gameService.lilahInTargetPosition() ? '-100px' : '0px';
     return (
       <React.Fragment>
-        <div className="lila-container">
+        <div className="lilah-container">
           <div className="counter">
             <div className="sink">
               <div className="sink-hole"></div>
@@ -27,10 +23,9 @@ export default class Lila extends Component {
               <div className="toilet-handle"></div>
             </div>
           </div>
-          <div className="lila" style={{marginLeft: (this.props.lilaPos * 4.5) + 'px', marginTop: marginTop}}>
-            <img src={lila} width={'50px'} height={'50px'}/>
+          <div className="lilah" style={{marginLeft: (this.props.lilahPos * 3.5) + 'px', marginTop: marginTop}}>
+            <img src={lilah} width={'50px'} height={'50px'} alt='lilah'/>
           </div>
-
         </div>
       </React.Fragment>
     );

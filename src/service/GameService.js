@@ -1,19 +1,20 @@
-import {loveBar, attentionBar, thirstBar} from '../components/bathroom/lila-meta/LilaMeta'
+import {loveBar, attentionBar, thirstBar} from '../components/drink-water-game/bathroom/lilah-stats/LilahStats'
 
-export const maxTargetLila = 44;
-export const minTargetLila = 26;
+export const maxTargetLilah = 39;
+export const minTargetLilah = 16;
+export const minLilahPetRange = 58;
 
 class GameService {
 
 
-  constructor(loveCurrent, attentionSeeked, thirstQuenched, lilaPos) {
+  constructor(loveCurrent, attentionSeeked, thirstQuenched, lilahPos) {
     this.loveCurrent = loveCurrent;
     this.attentionSeeked = attentionSeeked;
     this.thirstQuenched = thirstQuenched;
-    this.lilaPos = lilaPos;
+    this.lilahPos = lilahPos;
   }
 
-  petLila() {
+  petLilah() {
     // Maybe only able to do this when she's within X number of squares of you?
     this.loveCurrent += 3;
     this.attentionSeeked += 0.8;
@@ -21,25 +22,28 @@ class GameService {
       this.attentionSeeked += 1;
     }
     if (this.attentionSeeked > attentionBar.targetThreshold) {
-      this.lilaPos += 1;
+      this.lilahPos += 1;
     }
+    console.log(this.lilahPos)
   }
 
-  ignoreLila() {
+
+
+  ignoreLilah() {
     this.attentionSeeked -= 2;
     this.loveCurrent -= 2;
-    this.lilaPos -= 1;
+    this.lilahPos -= 1;
   }
 
-  talkToLila() {
+  talkToLilah() {
     this.attentionSeeked += 1.5;
     this.loveCurrent += 1.5;
-    this.lilaPos += 2.5;
+    this.lilahPos += 2.5;
   }
 
   regularUpdate() {
 
-    this.updateAttentionLoveAndLila();
+    this.updateAttentionLoveAndLilah();
     this.tryToDrinkWater();
     this.checkAndResetToMax();
 
@@ -47,15 +51,16 @@ class GameService {
   }
 
   tryToDrinkWater() {
-    if (this.lilaInTargetPosition() && this.loveCurrent >= loveBar.targetThreshold && this.attentionSeeked >= attentionBar.loseThreshold && this.attentionSeeked <= attentionBar.targetThreshold) {
+    if (this.lilahInTargetPosition() && this.loveCurrent >= loveBar.targetThreshold && this.attentionSeeked >= attentionBar.loseThreshold && this.attentionSeeked <= attentionBar.targetThreshold) {
       this.thirstQuenched += 4;
+      // add ANIMATION
       if (this.thirstQuenched > thirstBar.targetThreshold) {
         // you win
       }
     }
   }
 
-  updateAttentionLoveAndLila() {
+  updateAttentionLoveAndLilah() {
     this.attentionSeeked -= .35;
     this.loveCurrent -= .35;
 
@@ -70,19 +75,19 @@ class GameService {
         this.attentionSeeked += .45
       }
       if (this.attentionSeeked > attentionBar.loseThreshold && this.attentionSeeked < attentionBar.targetThreshold) {
-        if (this.lilaPos >= (maxTargetLila+minTargetLila)/2 ) {
-          this.lilaPos -= 0.9
+        if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2 ) {
+          this.lilahPos -= 0.9
         }
-        if (this.lilaPos <= (maxTargetLila+minTargetLila)/2) {
-          this.lilaPos += 0.9
+        if (this.lilahPos <= (maxTargetLilah+minTargetLilah)/2) {
+          this.lilahPos += 0.9
         }
       }
     }
     if (this.attentionSeeked < attentionBar.loseThreshold) {
-      this.lilaPos -= 1.8
+      this.lilahPos -= 1.8
     }
     if (this.attentionSeeked > attentionBar.targetThreshold) {
-      this.lilaPos += 1.8
+      this.lilahPos += 1.8
     }
   }
 
@@ -103,16 +108,16 @@ class GameService {
     if (this.attentionSeeked < 0) {
       this.attentionSeeked = 0;
     }
-    if (this.lilaPos > 100) {
-      this.lilaPos = 100;
+    if (this.lilahPos > 100) {
+      this.lilahPos = 100;
     }
-    if (this.lilaPos < 0) {
-      this.lilaPos = 0;
+    if (this.lilahPos < 0) {
+      this.lilahPos = 0;
     }
   }
 
-  lilaInTargetPosition() {
-    return this.lilaPos > minTargetLila && this.lilaPos < maxTargetLila;
+  lilahInTargetPosition() {
+    return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah;
   }
 
   getState() {
@@ -120,7 +125,7 @@ class GameService {
       loveCurrent: this.loveCurrent,
       attentionSeeked: this.attentionSeeked,
       thirstQuenched: this.thirstQuenched,
-      lilaPos: this.lilaPos,
+      lilahPos: this.lilahPos,
     }
   }
 

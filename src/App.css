@@ -10,13 +10,6 @@ html {
   grid-template-rows: 2fr 1fr;
 }
 
-/* bathroom container */
-.container-bathroom {
-  display: grid;
-  grid-template-columns: 1fr 500px 1fr;
-  grid-gap: 5px;
-}
-
 .container-footer {
   grid-row: 2;
   display: grid;

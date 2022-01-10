@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import Footer from './components/footer/Footer';
-import Bathroom from './components/bathroom/Bathroom';
+import DrinkWaterGame from './components/drink-water-game/DrinkWaterGame';
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="container-bathroom">
-          <Bathroom></Bathroom>
+        <div>
+          <DrinkWaterGame></DrinkWaterGame>
         </div>
         <div className="container-footer">
           <Footer></Footer>

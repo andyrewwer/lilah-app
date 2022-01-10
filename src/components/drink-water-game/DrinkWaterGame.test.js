@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import LilaMeta from './LilaMeta';
+import DrinkWaterGame from './DrinkWaterGame';
 
 test('renders learn react link', () => {
-  render(<LilaMeta />);
+  render(<DrinkWaterGame />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
