@@ -14,7 +14,7 @@ export default class Bathroom extends Component {
     return (
       <React.Fragment>
         <div className="container-lila">
-          <Lilah lilaPos={this.props.lilahPos} gameService={this.gameService} />
+          <Lilah lilahPos={this.props.lilahPos} gameService={this.gameService} />
         </div>
       </React.Fragment>
     );

@@ -5,7 +5,7 @@
 }
 
 .balanceBar {
-  height: 30px;
+  height: 20px;
   border: 2px #ccc solid;
   border-radius: 5px;
   width: 100%;
@@ -42,17 +42,16 @@
 .current {
 
   /* background-color: #64b2d1; */
-  height: 20px;
-  bottom: 28px;
+  height: 10px;
+  bottom: 23px;
   transition: width 0.5s ease-in-out;
   position: relative;
   opacity: 1;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 
   background-color: var(--colour2);
   background-image: repeating-linear-gradient(-45deg,
     transparent 0 5px,
   var(--colour1) 5px 10px);
-
 }

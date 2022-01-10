@@ -6,7 +6,7 @@ export const minLilahPetRange = 58;
 
 class GameService {
 
-
+// TODO Create a Lilah class that contains all these attributes
   constructor(loveCurrent, attentionSeeked, thirstQuenched, lilahPos) {
     this.loveCurrent = loveCurrent;
     this.attentionSeeked = attentionSeeked;
@@ -32,7 +32,7 @@ class GameService {
   ignoreLilah() {
     this.attentionSeeked -= 2;
     this.loveCurrent -= 2;
-    this.lilahPos -= 1;
+    this.lilahPos -= 1.5;
   }
 
   talkToLilah() {
@@ -52,7 +52,7 @@ class GameService {
 
   tryToDrinkWater() {
     if (this.lilahInTargetPosition() && this.loveCurrent >= loveBar.targetThreshold && this.attentionSeeked >= attentionBar.loseThreshold && this.attentionSeeked <= attentionBar.targetThreshold) {
-      this.thirstQuenched += 4;
+      this.thirstQuenched += 3.5;
       // add ANIMATION
       if (this.thirstQuenched > thirstBar.targetThreshold) {
         // you win

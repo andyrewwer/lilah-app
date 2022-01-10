@@ -14,7 +14,8 @@ export default class DrinkWaterGame extends Component {
   3. Adding other minigames (like feeding lila)
     3a - then adding meta games like knowing which game is next
   4. purring
-  5. GAME SERVICE instead of calling setSTate every time, each interval (0.1s) will call setState but otherwise
+  5. game timer
+  6. changelog?
 */
 /* Todo MODAL on success */
 
