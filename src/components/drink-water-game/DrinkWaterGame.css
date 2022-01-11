@@ -1,22 +1,46 @@
 .container-drink-water-game {
   display: grid;
   grid-template-columns: 1fr 400px 1fr;
-  grid-template-rows: 1fr 175px 1fr;
-  grid-column-gap: 10px;
-  grid-row-gap: 25px;
+  grid-template-rows: 1fr 185px 1fr;
+  /* grid-column-gap: 10px; */
+  /* grid-row-gap: 25px; */
 }
 
 .container-bathroom {
   grid-column: 2;
   grid-row: 2;
+  background-color: lightgrey;
+  border: 2px solid black;
 }
 
 .container-lilah-stats {
   grid-column: 2;
   grid-row: 1;
+  background-color: var(--lilah-bg-colour);
+  padding-bottom: 25px;
 }
 
 .container-lilah-actions {
   grid-column: 3;
-  grid-row: 2;
+  grid-row: 2 / 4;
+  background-color: var(--lilah-bg-colour);
+}
+
+.container-lilah-title {
+  grid-column: 3;
+  grid-row: 1;
+  background-color: var(--lilah-bg-colour);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.drink-water-game-title {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }

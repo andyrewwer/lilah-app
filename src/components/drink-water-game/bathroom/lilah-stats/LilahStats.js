@@ -27,7 +27,7 @@ import StatusBar from '../../../util/status-bar/StatusBar'
     max: 100,
     loseThreshold: 0,
     targetPosition: 'middle',
-    targetThreshold: 90,
+    targetThreshold: 95,
     loseIsYellow: true,
     label: 'Thirst Quenched'
   }
@@ -39,9 +39,16 @@ export default class LilahStatus extends Component {
     return (
       <React.Fragment>
           <div className="status-bars">
-            <StatusBar max={loveBar.max} current={this.props.loveCurrent} loseThreshold={loveBar.loseThreshold} targetThreshold={loveBar.targetThreshold} label={loveBar.label}/>
-            <StatusBar max={attentionBar.max} current={this.props.attentionSeeked} loseThreshold={attentionBar.loseThreshold} targetThreshold={attentionBar.targetThreshold} label={attentionBar.label} targetPosition={attentionBar.targetPosition} loseIsYellow={attentionBar.loseIsYellow}/>
-            <StatusBar max={thirstBar.max} current={this.props.thirstQuenched} loseThreshold={thirstBar.loseThreshold} targetThreshold={thirstBar.targetThreshold} label={thirstBar.label} />
+            <div className="status-bar">
+              <StatusBar max={loveBar.max} current={this.props.loveCurrent} loseThreshold={loveBar.loseThreshold} targetThreshold={loveBar.targetThreshold} label={loveBar.label}/>
+            </div>
+            <div className="status-bar">
+              <StatusBar max={attentionBar.max} current={this.props.attentionSeeked} loseThreshold={attentionBar.loseThreshold} targetThreshold={attentionBar.targetThreshold} label={attentionBar.label} targetPosition={attentionBar.targetPosition} loseIsYellow={attentionBar.loseIsYellow}/>
+              </div>
+            <div className="status-bar">
+              <StatusBar max={thirstBar.max} current={this.props.thirstQuenched} loseThreshold={thirstBar.loseThreshold} targetThreshold={thirstBar.targetThreshold} label={thirstBar.label} />
+            </div>
+
           </div>
       </React.Fragment>
     );

@@ -10,9 +10,7 @@
   grid-gap: 10px;
   justify-items: left;
   align-items: center;
-  background-color: var(--background-colour);
   padding: 10px 0px;
-  border-radius: 4px;
   /* overflow: hidden; */
 }
 

@@ -17,8 +17,8 @@ export default class DrinkWaterGame extends Component {
   4. purring
   5. game timer
   6. changelog?
-  7. Deploy to GH pages
-  8. get domain and deploy there
+  7. get domain and deploy there
+  8. indication of when Lila is drinking and good stuff happening
 */
 /* Todo MODAL on success */
 
@@ -61,6 +61,11 @@ export default class DrinkWaterGame extends Component {
         <div className="container-drink-water-game">
           <div className="container-lilah-stats">
             <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
+          </div>
+          <div className="container-lilah-title">
+            <div className="drink-water-game-title">
+              <h2> LILAH </h2>
+            </div>
           </div>
           <div className="container-bathroom">
             <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos}/>

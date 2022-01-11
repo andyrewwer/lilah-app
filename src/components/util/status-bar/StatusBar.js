@@ -22,7 +22,7 @@ export default class StatusBar extends Component {
 
     return (
       <div>
-      <span>{this.props.label}</span>
+        <div class="center-balance"><span>{this.props.label}</span></div>
         <div className='balanceBar'>
           <div className={classNames('balanceSection', {'loseSection': !this.props.loseIsYellow}, {'middleSection': this.props.loseIsYellow})} style={{'width': loseThreshold+'%'}}></div>
           <div className={classNames('balanceSection', {'middleSection': this.props.targetPosition !== 'middle'}, {'winSection': this.props.targetPosition === 'middle'})} style={{'width': middleSection+'%'}}></div>
