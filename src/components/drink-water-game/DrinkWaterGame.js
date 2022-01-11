@@ -17,6 +17,8 @@ export default class DrinkWaterGame extends Component {
   4. purring
   5. game timer
   6. changelog?
+  7. Deploy to GH pages
+  8. get domain and deploy there
 */
 /* Todo MODAL on success */
 
