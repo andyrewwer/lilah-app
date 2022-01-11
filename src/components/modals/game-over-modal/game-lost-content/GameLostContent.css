@@ -1,4 +1,4 @@
-.game-won-container {
+.game-lost-container {
   width: 400px;
   display: grid;
   grid-template-rows: 225px 50px 20px 20px 50px;
@@ -17,34 +17,34 @@
   width: 225px;
 }
 
-.circle-around-lilah-won-img {
+.circle-around-lilah-lost-img {
   border-radius: 50%;
       width: 210px;
       height: 210px;
       position: relative;
       bottom: 184px;
       right: 41px;
-      box-shadow: 0px 0px 1px 6px rgb(50 205 50),
+      box-shadow: 0px 0px 1px 6px rgb(220 20 60),
       0px 0px 0px 12px white,
-      0px 0px 2px 15px rgb(50 205 50 / 60%),
+      0px 0px 2px 15px rgb(220 20 60 / 60%),
       0px 0px 0px 21px white,
-      0px 0px 1px 23px rgb(50 205 50 / 30%);
+      0px 0px 1px 23px rgb(220 20 60 / 30%);
 }
 
-h2.game-won-title {
+h2.game-lost-title {
   margin-top: 45px;
-  color: rgb(50, 205, 50);
+  color: rgb(220 20 60);
   font-size: 40px;
 }
 
-.green {
-  color: rgb(50, 205, 50);
+.red {
+  color: rgb(220 20 60);
   font-weight: 800;
 }
 
-button.play-again-won-button {
+button.play-again-lost-button {
   border-radius: 10px;
-  background-color: #4CAF50; /* Green */
+  background-color: #CD5C5C; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;

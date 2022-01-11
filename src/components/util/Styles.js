@@ -10,3 +10,12 @@ export const customStyles = {
       maxHeight: '80vh'
     }
 };
+
+export const convertIntToTime = (time) => {
+  let minutes = parseInt(time / 60);
+  let seconds = parseInt(time % 60);
+  if (seconds / 10 < 1) {
+    seconds = '0' + seconds
+  }
+  return minutes + ':' + seconds;
+}

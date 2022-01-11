@@ -33,7 +33,7 @@ export default class DrinkWaterGame extends Component {
 
   constructor() {
     super();
-    this.gameService = new GameService(50, 50, 5, 10);
+    this.gameService = new GameService(50, 50, 0, 10);
     this.state = this.gameService.getState();
 
     this.petLilah = this.petLilah.bind(this);
@@ -67,7 +67,7 @@ export default class DrinkWaterGame extends Component {
             <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
           </div>
         </div>
-        <GameWonModal gameService={this.gameService} gameOver={this.state.gameOver} gameWon={this.state.gameWon}/>
+        <GameWonModal gameService={this.gameService} gameOver={this.state.gameOver} gameStatus={this.state.gameStatus}/>
       </React.Fragment>
     );
   }
