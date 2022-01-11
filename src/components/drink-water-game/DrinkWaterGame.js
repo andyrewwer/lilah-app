@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Bathroom from './bathroom/Bathroom'
 import LilahStats from './bathroom/lilah-stats/LilahStats'
 import LilahActions from './bathroom/lilah-actions/LilahActions'
+import GameWonModal from '../modals/game-over-modal/GameOverModal'
 const { GameService } = require('../../service/GameService.js')
 
 
@@ -51,19 +52,23 @@ export default class DrinkWaterGame extends Component {
   talkToLilah() {
     this.gameService.talkToLilah()
   }
+
   render() {
     return (
-      <div className="container-drink-water-game">
-        <div className="container-lilah-stats">
-          <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
+      <React.Fragment>
+        <div className="container-drink-water-game">
+          <div className="container-lilah-stats">
+            <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
+          </div>
+          <div className="container-bathroom">
+            <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos}/>
+          </div>
+          <div className="container-lilah-actions">
+            <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
+          </div>
         </div>
-        <div className="container-bathroom">
-          <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos}/>
-        </div>
-        <div className="container-lilah-actions">
-          <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
-        </div>
-      </div>
+        <GameWonModal gameService={this.gameService} gameOver={this.state.gameOver} gameWon={this.state.gameWon}/>
+      </React.Fragment>
     );
   }
 }

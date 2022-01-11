@@ -12,10 +12,12 @@ class GameService {
     this.attentionSeeked = attentionSeeked;
     this.thirstQuenched = thirstQuenched;
     this.lilahPos = lilahPos;
+    this.gameOver = false;
+    this.gameWon = false;
   }
 
   petLilah() {
-    // Maybe only able to do this when she's within X number of squares of you?
+    // TODO Maybe only able to do this when she's within X number of squares of you?
     this.loveCurrent += 3;
     this.attentionSeeked += 0.8;
     if (this.loveCurrent > (loveBar.max * .9)) {
@@ -24,7 +26,6 @@ class GameService {
     if (this.attentionSeeked > attentionBar.targetThreshold) {
       this.lilahPos += 1;
     }
-    console.log(this.lilahPos)
   }
 
 
@@ -42,20 +43,20 @@ class GameService {
   }
 
   regularUpdate() {
-
-    this.updateAttentionLoveAndLilah();
-    this.tryToDrinkWater();
-    this.checkAndResetToMax();
-
+    if (!this.gameOver) {
+      this.updateAttentionLoveAndLilah();
+      this.tryToDrinkWater();
+      this.checkAndResetToMax();
+    }
     return this.getState();
   }
 
   tryToDrinkWater() {
     if (this.lilahInTargetPosition() && this.loveCurrent >= loveBar.targetThreshold && this.attentionSeeked >= attentionBar.loseThreshold && this.attentionSeeked <= attentionBar.targetThreshold) {
+      // this.thirstQuenched += 100;
       this.thirstQuenched += 3.5;
-      // add ANIMATION
       if (this.thirstQuenched > thirstBar.targetThreshold) {
-        // you win
+        this.endGame(true);
       }
     }
   }
@@ -65,7 +66,8 @@ class GameService {
     this.loveCurrent -= .35;
 
     if (this.loveCurrent < loveBar.loseThreshold) {
-      // you lose
+      this.endGame(false);
+      return
     }
     if (this.loveCurrent > loveBar.targetThreshold) {
       if (this.attentionSeeked > (attentionBar.loseThreshold + attentionBar.targetThreshold)/2) {
@@ -92,12 +94,9 @@ class GameService {
   }
 
   checkAndResetToMax() {
-    if (this.thirstQuenched > thirstBar.targetThreshold) {
-      // YOU WIN
-    }
     if (this.loveCurrent < loveBar.loseThreshold) {
-      // YOU LOSE
-      this.loveCurrent = loveBar.loseThreshold;
+      this.endGame(false);
+      return
     }
     if (this.loveCurrent > loveBar.max) {
       this.loveCurrent = loveBar.max;
@@ -120,12 +119,28 @@ class GameService {
     return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah;
   }
 
+  endGame(won) {
+    this.gameOver = true;
+    this.gameWon = won;
+  }
+
+  startNewGame(loveCurrent, attentionSeeked, thirstQuenched, lilahPos) {
+    this.loveCurrent = loveCurrent;
+    this.attentionSeeked = attentionSeeked;
+    this.thirstQuenched = thirstQuenched;
+    this.lilahPos = lilahPos;
+    this.gameOver = false;
+    this.gameWon = false;
+  }
+
   getState() {
     return {
       loveCurrent: this.loveCurrent,
       attentionSeeked: this.attentionSeeked,
       thirstQuenched: this.thirstQuenched,
       lilahPos: this.lilahPos,
+      gameWon: this.gameWon,
+      gameOver: this.gameOver
     }
   }
 

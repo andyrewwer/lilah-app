@@ -1,0 +1,62 @@
+.open-modal-container {
+  display: flex;
+  justify-content: center;
+}
+
+.game-won-container {
+  width: 400px;
+  display: grid;
+  grid-template-rows: 225px 50px 20px 20px 50px;
+  grid-gap: 15px;
+  margin-top: 50px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  .overflow: hidden;
+}
+
+.lilah-img {
+  margin-left: 117px;
+  margin-top: 75px;
+  height: 225px;
+  width: 225px;
+}
+
+.circle-around-lilah-img {
+  border-radius: 50%;
+      width: 210px;
+      height: 210px;
+      position: relative;
+      bottom: 184px;
+      right: 41px;
+      box-shadow: 0px 0px 1px 6px rgb(50 205 50),
+      0px 0px 0px 12px white,
+      0px 0px 2px 15px rgb(50 205 50 / 60%),
+      0px 0px 0px 21px white,
+      0px 0px 1px 23px rgb(50 205 50 / 30%);
+}
+
+h2.game-won-title {
+  margin-top: 45px;
+  color: rgb(50, 205, 50);
+  font-size: 40px;
+}
+
+.green {
+  color: rgb(50, 205, 50);
+  font-weight: 800;
+}
+
+button.play-again-button {
+  border-radius: 10px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  width: 300px;
+}
