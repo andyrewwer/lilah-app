@@ -1,4 +1,4 @@
-import {loveBar, attentionBar, thirstBar} from '../components/drink-water-game/bathroom/lilah-stats/LilahStats'
+import {loveBar, attentionBar} from '../components/drink-water-game/bathroom/lilah-stats/LilahStats'
 
 export const maxTargetLilah = 39;
 export const minTargetLilah = 16;
@@ -65,7 +65,6 @@ class GameService {
   }
 
   updateTimer() {
-    console.log(new Date(), this.timeRemaining);
     this.timeRemaining -= 0.5;
     if (this.timeRemaining < 0) {
       this.endGame(GAME_OVER_OUT_OF_TIME);

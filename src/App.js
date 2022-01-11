@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Footer from './components/footer/Footer';
 import DrinkWaterGame from './components/drink-water-game/DrinkWaterGame';
