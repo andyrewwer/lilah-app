@@ -1,6 +1,6 @@
 import {loveBar, attentionBar} from '../components/drink-water-game/bathroom/lilah-stats/LilahStats'
 
-export const maxTargetLilah = 39;
+export const maxTargetLilah = 35;
 export const minTargetLilah = 16;
 export const minLilahPetRange = 58;
 export const GAME_OVER_OUT_OF_TIME = 'GAME_OVER_OUT_OF_TIME';
@@ -99,6 +99,9 @@ class GameService {
     }
 
     if (this.loveCurrent < loveBar.loseThreshold) {
+      if (this.lilahPos < 0) {
+        this.lilahPos = 0;
+      }
       this.endGame(GAME_OVER_LOVE_TOO_LOW);
       return
     }
@@ -118,8 +121,8 @@ class GameService {
     if (this.attentionSeeked < 0) {
       this.attentionSeeked = 0;
     }
-    if (this.lilahPos > 100) {
-      this.lilahPos = 100;
+    if (this.lilahPos > 85) {
+      this.lilahPos = 85;
     }
     if (this.lilahPos < 0) {
       this.lilahPos = 0;
@@ -131,6 +134,7 @@ class GameService {
   }
 
   endGame(status) {
+    // this.lilahPos = 40;
     this.gameOver = true;
     this.gameStatus = status;
   }

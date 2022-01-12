@@ -1,7 +1,7 @@
 .container-drink-water-game {
   display: grid;
-  grid-template-columns: 1fr 400px 1fr;
-  grid-template-rows: 1fr 185px 1fr;
+  grid-template-columns: 1fr calc(var(--lilah-size) * 8) 1fr;
+  grid-template-rows: 1fr calc(var(--lilah-size) * 3.5) 1fr;
 }
 
 .container-bathroom {
@@ -31,6 +31,8 @@
   display: grid;
   justify-content: center;
   align-items: center;
+  padding: 0px 10px;
+
 }
 
 .container-lilah-filler {
@@ -69,6 +71,7 @@
   display: grid;
   justify-content: center;
   align-items: center;
+  padding: 0px 10px;
 }
 
 

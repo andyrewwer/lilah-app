@@ -6,7 +6,7 @@ const lilah = require('../../../../assets/lilah-300.png');
 export default class Lilah extends Component {
 
   render() {
-    let marginTop = this.props.gameService.lilahInTargetPosition() ? '-100px' : '0px';
+    let bottom = this.props.gameService.lilahInTargetPosition() ? '50px' : '10px';
     return (
       <React.Fragment>
         <div className="lilah-container">
@@ -23,8 +23,10 @@ export default class Lilah extends Component {
               <div className="toilet-handle"></div>
             </div>
           </div>
-          <div className="lilah" style={{marginLeft: (this.props.lilahPos * 3.5) + 'px', marginTop: marginTop}}>
-            <img src={lilah} width={'50px'} height={'50px'} alt='lilah'/>
+          <div className="floor">
+            <div className="lilah" style={{marginLeft: (this.props.lilahPos) + '%', bottom: bottom}}>
+              <img src={lilah} width={'80px'} height={'80px'} alt='lilah'/>
+            </div>
           </div>
         </div>
       </React.Fragment>

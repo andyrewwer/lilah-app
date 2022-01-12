@@ -8,6 +8,8 @@ export const customStyles = {
       transform: 'translate(-50%, -55%)',
       maxWidth: '400px',
       maxHeight: '80vh'
+    }, overlay: {
+      zIndex: '777'
     }
 };
 

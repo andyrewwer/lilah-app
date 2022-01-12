@@ -1,6 +1,8 @@
 :root {
   --lilah-bg-colour: lavender;
   --player-bg-colour: lightblue;
+  --background-colour: lightgrey;
+  --lilah-size: 80px;
 }
 
 body {
