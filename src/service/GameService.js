@@ -19,6 +19,7 @@ class GameService {
     this.gameStatus = null;
     this.timeRemaining = 120;
     this.highScore = 120;
+    this.debugMode = false;
   }
 
   petLilah() {
@@ -46,7 +47,7 @@ class GameService {
   }
 
   regularUpdate() {
-    if (!this.gameOver) {
+    if (!this.gameOver && !this.debugMode) {
       this.updateAttentionLoveAndLilah();
       this.tryToDrinkWater();
       this.checkAndResetToMax();

@@ -15,7 +15,7 @@
   grid-column: 2;
   grid-row: 1;
   background-color: var(--lilah-bg-colour);
-  padding-bottom: 25px;
+  padding-top: 5px;
 }
 
 .container-lilah-actions {
@@ -55,7 +55,8 @@
   grid-column: 2;
   grid-row: 3;
   background-color: var(--player-bg-colour);
-  padding-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .container-player-actions {

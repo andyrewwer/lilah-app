@@ -22,11 +22,11 @@ export default class StatusBar extends Component {
 
     return (
       <div>
-        <div class="center-balance"><span>{this.props.label}</span></div>
-        <div className='balanceBar'>        
-          <div className={classNames('balanceSection', {'loseSection': !this.props.loseIsYellow}, {'middleSection': this.props.loseIsYellow})} style={{'width': loseThreshold+'%'}}></div>
-          <div className={classNames('balanceSection', {'middleSection': this.props.targetPosition !== 'middle'}, {'winSection': this.props.targetPosition === 'middle'})} style={{'width': middleSection+'%'}}></div>
-          <div className={classNames('balanceSection', {'middleSection': this.props.targetPosition === 'middle'}, {'winSection': this.props.targetPosition !== 'middle'})} style={{'width': targetThreshold+'%'}}></div>
+        <div className="center-balance"><span>{this.props.label}</span></div>
+        <div className='balanceBar'>
+          <span className={classNames('balanceSection', {'loseSection': !this.props.loseIsYellow}, {'middleSection': this.props.loseIsYellow})} style={{'width': loseThreshold+'%'}}></span>
+          <span className={classNames('balanceSection', {'middleSection': this.props.targetPosition !== 'middle'}, {'winSection': this.props.targetPosition === 'middle'})} style={{'width': middleSection+'%'}}></span>
+          <span className={classNames('balanceSection', {'middleSection': this.props.targetPosition === 'middle'}, {'winSection': this.props.targetPosition !== 'middle'})} style={{'width': targetThreshold+'%'}}></span>
           <div className='balanceSection current' style={{'width': current+'%'}}></div>
         </div>
       </div>

@@ -70,11 +70,11 @@ export default class DrinkWaterGame extends Component {
           <div className="container-lilah-actions">
             <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
           </div>
-          <div class="container-lilah-filler"></div>
+          <div className="container-lilah-filler"></div>
           <div className="container-bathroom">
             <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos}/>
           </div>
-            <div class="container-player-filler"></div>
+            <div className="container-player-filler"></div>
           <div className="container-player-stats">
             <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
           </div>
