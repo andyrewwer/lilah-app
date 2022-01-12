@@ -15,13 +15,14 @@
 }
 
 .counter {
-  background-color: grey;
+  background-color: #f3f3f3;
   width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   grid-row: 1;
+  border: 2px solid #c0c0c0;
 }
 
 .lilah {
@@ -40,7 +41,9 @@
   background-color: black;
   grid-row: 1;
   margin-left: calc(var(--lilah-size) * 1.5);
-  box-shadow: inset 0px 0px 0px 10px #efefef, inset 0px 0px 0px 40px #d4f1f9;
+  box-shadow: inset 0px 0px 0px 10px #efefef,
+              inset 0px 0px 0px 40px #d4f1f9,
+              0px 0px 0px 2px #c0c0c0;
   border: 1px solid #eee;
 }
 .sink-hole {
@@ -58,7 +61,7 @@
    width: 10px;
    height: 35px;
    margin-left: 46px;
-   margin-top: -47px;
+   margin-top: -44px;
 
    background-color: #C0C0C0;
    border-radius: 2px;

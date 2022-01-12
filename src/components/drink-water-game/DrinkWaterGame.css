@@ -2,8 +2,6 @@
   display: grid;
   grid-template-columns: 1fr 400px 1fr;
   grid-template-rows: 1fr 185px 1fr;
-  /* grid-column-gap: 10px; */
-  /* grid-row-gap: 25px; */
 }
 
 .container-bathroom {
@@ -22,7 +20,7 @@
 
 .container-lilah-actions {
   grid-column: 3;
-  grid-row: 2 / 4;
+  grid-row: 2;
   background-color: var(--lilah-bg-colour);
 }
 
@@ -35,6 +33,12 @@
   align-items: center;
 }
 
+.container-lilah-filler {
+  background-color: var(--lilah-bg-colour);
+  grid-column: 3;
+  grid-row: 3;
+}
+
 .drink-water-game-title {
   width: 200px;
   height: 100px;
@@ -43,4 +47,33 @@
   display: grid;
   justify-content: center;
   align-items: center;
+}
+
+.container-player-stats {
+  grid-column: 2;
+  grid-row: 3;
+  background-color: var(--player-bg-colour);
+  padding-top: 25px;
+}
+
+.container-player-actions {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: var(--player-bg-colour);
+}
+
+.container-player-title {
+  grid-column: 1;
+  grid-row: 3;
+  background-color: var(--player-bg-colour);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container-player-filler {
+  background-color: var(--player-bg-colour);
+  grid-column: 1;
+  grid-row: 1;
 }

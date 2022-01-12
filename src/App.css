@@ -8,6 +8,8 @@ html {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
+  width: 80vw;
+  margin: auto;
 }
 
 .container-footer {

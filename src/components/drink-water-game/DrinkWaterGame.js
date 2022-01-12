@@ -19,8 +19,8 @@ export default class DrinkWaterGame extends Component {
   6. changelog?
   7. get domain and deploy there
   8. indication of when Lila is drinking and good stuff happening
+  9. THIRST QUENCHEd BAR SHOULD BE MORE OBVIOUSLY "GREEN"
 */
-/* Todo MODAL on success */
 
 
   componentDidMount() {
@@ -67,10 +67,23 @@ export default class DrinkWaterGame extends Component {
               <h2> LILAH </h2>
             </div>
           </div>
+          <div className="container-lilah-actions">
+            <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
+          </div>
+          <div class="container-lilah-filler"></div>
           <div className="container-bathroom">
             <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos}/>
           </div>
-          <div className="container-lilah-actions">
+            <div class="container-player-filler"></div>
+          <div className="container-player-stats">
+            <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
+          </div>
+          <div className="container-player-title">
+            <div className="drink-water-game-title">
+              <h2> PLAYER </h2>
+            </div>
+          </div>
+          <div className="container-player-actions">
             <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
           </div>
         </div>
