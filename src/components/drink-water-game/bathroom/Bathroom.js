@@ -1,6 +1,6 @@
 import './Bathroom.css';
 import React, { Component } from 'react'
-import Lilah from './lilah/Lilah'
+const lilah = require('../../../assets/lilah-300.png');
 
 
 export default class Bathroom extends Component {
@@ -11,10 +11,30 @@ export default class Bathroom extends Component {
   }
 
   render() {
+    let bottom = this.props.gameService.lilahInTargetPosition() ? '95px' : '10px';
+
     return (
       <React.Fragment>
-        <div className="container-lila">
-          <Lilah lilahPos={this.props.lilahPos} gameService={this.gameService} />
+        <div className="lilah-container">
+        <div className="mask"></div>
+          <div className="counter">
+            <div className="sink">
+              <div className="sink-hole"></div>
+              <div className="faucet"></div>
+              <div className="knobs"></div>
+            </div>
+          </div>
+          <div className="toilet">
+            <div className="toilet-seat"></div>
+            <div className="toilet-back">
+              <div className="toilet-handle"></div>
+            </div>
+          </div>
+          <div className="floor">
+            <div className="lilah" style={{marginLeft: (this.props.lilahPos) + '%', bottom: bottom}}>
+              <img src={lilah} width={'80px'} height={'80px'} alt='lilah'/>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );

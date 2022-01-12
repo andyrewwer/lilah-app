@@ -4,10 +4,6 @@ import {GAME_OVER_OUT_OF_TIME, GAME_OVER_LOVE_TOO_LOW} from '../../../../service
 const lilah = require('../../../../assets/lilah-sad-300.png');
 
 export default class GameLostContent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
 
   render () {
     return (

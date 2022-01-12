@@ -8,9 +8,6 @@ import {GAME_OVER_GAME_WON} from '../../../service/GameService'
 
 // TODO prevent scroll behind modal
 export default class GameOverModal extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render () {
     const closeModal = () => {

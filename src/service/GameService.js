@@ -1,7 +1,7 @@
 import {loveBar, attentionBar} from '../components/drink-water-game/bathroom/lilah-stats/LilahStats'
 
-export const maxTargetLilah = 35;
-export const minTargetLilah = 16;
+export const maxTargetLilah = 33;
+export const minTargetLilah = 19;
 export const minLilahPetRange = 58;
 export const GAME_OVER_OUT_OF_TIME = 'GAME_OVER_OUT_OF_TIME';
 export const GAME_OVER_LOVE_TOO_LOW = 'GAME_OVER_LOVE_TOO_LOW';
@@ -20,6 +20,7 @@ class GameService {
     this.timeRemaining = 120;
     this.highScore = 120;
     this.debugMode = false;
+    // this.debugMode = true;
   }
 
   petLilah() {

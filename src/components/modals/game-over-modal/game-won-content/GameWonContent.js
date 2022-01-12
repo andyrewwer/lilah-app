@@ -4,9 +4,6 @@ import './GameWonContent.css';
 const lilah = require('../../../../assets/lilah-300.png');
 
 export default class GameWonContent extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render () {
     return (
