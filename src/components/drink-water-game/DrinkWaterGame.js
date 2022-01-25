@@ -6,7 +6,6 @@ import LilahActions from './bathroom/lilah-actions/LilahActions'
 import GameWonModal from '../modals/game-over-modal/GameOverModal'
 const { GameService } = require('../../service/GameService.js')
 
-
 export default class DrinkWaterGame extends Component {
 // OPTIONS:
 /* // TODO:
@@ -35,7 +34,7 @@ export default class DrinkWaterGame extends Component {
 
   constructor() {
     super();
-    this.gameService = new GameService(50, 50, 0, 10);
+    this.gameService = new GameService(50, 50, 0, 10, 40);
     this.state = this.gameService.getState();
 
     this.petLilah = this.petLilah.bind(this);
@@ -72,7 +71,7 @@ export default class DrinkWaterGame extends Component {
           </div>
           <div className="container-lilah-filler"></div>
           <div className="container-bathroom">
-            <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos}/>
+            <Bathroom gameService={this.gameService} lilahPos={this.state.lilahPos} playerPos={this.state.playerPos}/>
           </div>
             <div className="container-player-filler"></div>
           <div className="container-player-stats">

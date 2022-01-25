@@ -1,7 +1,9 @@
 import './Bathroom.css';
 import React, { Component } from 'react'
-const lilah = require('../../../assets/lilah-300.png');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFemale, faMale } from '@fortawesome/free-solid-svg-icons'
 
+const lilah = require('../../../assets/lilah-300.png');
 
 export default class Bathroom extends Component {
 
@@ -11,8 +13,9 @@ export default class Bathroom extends Component {
   }
 
   render() {
-    let bottom = this.props.gameService.lilahInTargetPosition() ? '95px' : '10px';
-
+    let lilahBottom = this.props.gameService.lilahInTargetPosition() ? '60px' : '-30px';
+    const FEMALE = true;
+    console.log(this.props.playerPos)
     return (
       <React.Fragment>
         <div className="lilah-container">
@@ -31,8 +34,14 @@ export default class Bathroom extends Component {
             </div>
           </div>
           <div className="floor">
-            <div className="lilah" style={{marginLeft: (this.props.lilahPos) + '%', bottom: bottom}}>
+            <div className="lilah" style={{left: (this.props.lilahPos) + '%', bottom: lilahBottom}}>
               <img src={lilah} width={'80px'} height={'80px'} alt='lilah'/>
+            </div>
+            <div className="player" style={{left: (this.props.playerPos) + '%'}}>
+              {FEMALE ?
+                <FontAwesomeIcon icon={faFemale} className="female" />      :
+                <FontAwesomeIcon icon={faMale} className="male" />
+              }
             </div>
           </div>
         </div>

@@ -10,17 +10,18 @@ export const GAME_OVER_GAME_WON = 'GAME_OVER_GAME_WON';
 class GameService {
 
 // TODO Create a Lilah class that contains all these attributes
-  constructor(loveCurrent, attentionSeeked, thirstQuenched, lilahPos) {
+  constructor(loveCurrent, attentionSeeked, thirstQuenched, lilahPos, playerPos) {
     this.loveCurrent = loveCurrent;
     this.attentionSeeked = attentionSeeked;
     this.thirstQuenched = thirstQuenched;
     this.lilahPos = lilahPos;
+    this.playerPos = playerPos;
     this.gameOver = false;
     this.gameStatus = null;
     this.timeRemaining = 120;
     this.highScore = 120;
     this.debugMode = false;
-    // this.debugMode = true;
+    this.debugMode = true;
   }
 
   petLilah() {
@@ -141,11 +142,12 @@ class GameService {
     this.gameStatus = status;
   }
 
-  startNewGame(loveCurrent, attentionSeeked, thirstQuenched, lilahPos) {
+  startNewGame(loveCurrent, attentionSeeked, thirstQuenched, lilahPos, playerPos) {
     this.loveCurrent = loveCurrent;
     this.attentionSeeked = attentionSeeked;
     this.thirstQuenched = thirstQuenched;
     this.lilahPos = lilahPos;
+    this.playerPos = playerPos;
     this.gameOver = false;
     this.gameStatus = null;
     this.timeRemaining = 120;
@@ -157,6 +159,7 @@ class GameService {
       attentionSeeked: this.attentionSeeked,
       thirstQuenched: this.thirstQuenched,
       lilahPos: this.lilahPos,
+      playerPos: this.playerPos,
       gameStatus: this.gameStatus,
       gameOver: this.gameOver,
       timeRemaining: this.timeRemaining,
