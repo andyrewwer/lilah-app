@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Bathroom from './bathroom/Bathroom'
 import LilahStats from './bathroom/lilah-stats/LilahStats'
 import LilahActions from './bathroom/lilah-actions/LilahActions'
-import GameWonModal from '../modals/game-over-modal/GameOverModal'
+import GameOverModal from '../modals/game-over-modal/GameOverModal'
 
 const { GameService } = require('../../service/GameService.js')
 
@@ -91,7 +91,7 @@ export default class DrinkWaterGame extends Component {
 
           </div>
         </div>
-        <GameWonModal gameService={this.gameService} gameOver={this.state.gameOver} gameStatus={this.state.gameStatus}/>
+        <GameOverModal gameService={this.gameService} gameOver={this.state.gameOver} gameStatus={this.state.gameStatus}/>
         {(this.state.alert === 'lilah-no-pet') && <div className="lilah-not-close-enough-alert">
           <h2> LILAH IS NOT CLOSE ENOUGH TO PET </h2>
         </div>}

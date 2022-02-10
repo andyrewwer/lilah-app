@@ -19,14 +19,15 @@ export default class GameWonContent extends Component {
           <div className="score-won">
             <span className="score-won"> Score: <span className="green"> {this.props.timeRemaining} remaining</span></span>
           </div>
-          <div className="high-score-won">
-            <span className="score-won"> High Score: <span className="green"> {this.props.highScore} remaining</span> </span>
-          </div>
           <div className="play-again-button">
-            <button className="play-again-won-button" onClick={this.props.closeModalCallback}> PLAY AGAIN </button>
+            <button className="play-again-won-button" onClick={this.props.closeModalCallback}> Play Again </button>
           </div>
         </div>
       </React.Fragment>
     )
   }
 }
+
+// <div className="high-score-won">
+//   <span className="score-won"> High Score: <span className="green"> {this.props.highScore} remaining</span> </span>
+// </div>

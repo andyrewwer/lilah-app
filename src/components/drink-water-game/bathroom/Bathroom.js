@@ -15,7 +15,6 @@ export default class Bathroom extends Component {
   render() {
     let lilahBottom = this.props.gameService.lilahInTargetPosition() ? '60px' : '-30px';
     const FEMALE = true;
-    console.log(this.props.playerPos)
     return (
       <React.Fragment>
         <div className="lilah-container">

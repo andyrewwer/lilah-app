@@ -6,6 +6,7 @@ export const minLilahPetRange = 58;
 export const GAME_OVER_OUT_OF_TIME = 'GAME_OVER_OUT_OF_TIME';
 export const GAME_OVER_LOVE_TOO_LOW = 'GAME_OVER_LOVE_TOO_LOW';
 export const GAME_OVER_GAME_WON = 'GAME_OVER_GAME_WON';
+export const GAME_NOT_STARTED = 'GAME_NOT_STARTED';
 
 class GameService {
 
@@ -16,12 +17,12 @@ class GameService {
     this.lilahPos = lilahPos;
     this.playerPos = playerPos;
     this.gameOver = false;
-    this.gameStatus = null;
+    this.gameStatus = GAME_NOT_STARTED;
     this.timeRemaining = 120;
     this.highScore = 120;
     this.debugMode = false;
     this.alert = 'none';
-    // this.debugMode = true;
+    this.debugMode = true;
   }
 
   petLilah() {
@@ -29,9 +30,7 @@ class GameService {
       this.loveCurrent += 3;
     } else {
       this.alert = 'lilah-no-pet'
-      console.log('she\'s too far away!')
     }
-    // TODO Maybe only able to do this when she's within X number of squares of you?
   }
 
   ignoreLilah() {
@@ -146,6 +145,7 @@ class GameService {
     this.gameOver = false;
     this.gameStatus = null;
     this.timeRemaining = 120;
+    this.debugMode = false;
   }
 
   setAlert(alert) {
