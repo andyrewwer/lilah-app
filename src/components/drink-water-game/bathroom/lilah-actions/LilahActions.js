@@ -14,7 +14,7 @@ export default class LilahActions extends Component {
             <button className="lilah-button" onClick={this.props.ignoreLilahCallback}>IGNORE</button>
           </div>
           <div className="ignore">
-            <button className="lilah-button" onClick={this.props.talkToLilahCallback}>TALK</button>
+            <button className="lilah-button" onClick={this.props.talkToLilahCallback}>COAX</button>
           </div>
         </div>
       </React.Fragment>

@@ -11,7 +11,7 @@ export default class GameOverModal extends Component {
 
   render () {
     const closeModal = () => {
-      this.props.gameService.startNewGame(50, 50, 0, 10, 80);
+      this.props.gameService.startNewGame(50, 0, 10, 80);
     }
     let timeRemaining = this.props.gameService.getState()['timeRemaining'];
     let highScore = this.props.gameService.getState()['highScore'];

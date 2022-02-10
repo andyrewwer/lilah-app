@@ -10,7 +10,6 @@ function App() {
           <DrinkWaterGame></DrinkWaterGame>
         </div>
         <div className="container-footer">
-          <Footer></Footer>
         </div>
       </div>
     </div>

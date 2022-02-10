@@ -4,6 +4,7 @@ import Bathroom from './bathroom/Bathroom'
 import LilahStats from './bathroom/lilah-stats/LilahStats'
 import LilahActions from './bathroom/lilah-actions/LilahActions'
 import GameWonModal from '../modals/game-over-modal/GameOverModal'
+
 const { GameService } = require('../../service/GameService.js')
 
 export default class DrinkWaterGame extends Component {
@@ -24,7 +25,11 @@ export default class DrinkWaterGame extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState(this.gameService.regularUpdate());
+      let newState = this.gameService.regularUpdate();
+      if (newState.alert !== 'none') {
+      }
+      newState.alert = 'none'
+      this.setState(newState);
     }, 500);
   }
 
@@ -34,7 +39,7 @@ export default class DrinkWaterGame extends Component {
 
   constructor() {
     super();
-    this.gameService = new GameService(50, 50, 0, 10, 40);
+    this.gameService = new GameService(50, 0, 10, 80);
     this.state = this.gameService.getState();
 
     this.petLilah = this.petLilah.bind(this);
@@ -59,7 +64,7 @@ export default class DrinkWaterGame extends Component {
       <React.Fragment>
         <div className="container-drink-water-game">
           <div className="container-lilah-stats">
-            <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
+            <LilahStats loveCurrent={this.state.loveCurrent} thirstQuenched={this.state.thirstQuenched}/>
           </div>
           <div className="container-lilah-title">
             <div className="drink-water-game-title">
@@ -75,7 +80,6 @@ export default class DrinkWaterGame extends Component {
           </div>
             <div className="container-player-filler"></div>
           <div className="container-player-stats">
-            <LilahStats loveCurrent={this.state.loveCurrent} attentionSeeked={this.state.attentionSeeked} thirstQuenched={this.state.thirstQuenched}/>
           </div>
           <div className="container-player-title">
             <div className="drink-water-game-title">
@@ -83,7 +87,7 @@ export default class DrinkWaterGame extends Component {
             </div>
           </div>
           <div className="container-player-actions">
-            <LilahActions petLilahCallback={this.petLilah} ignoreLilahCallback={this.ignoreLilah} talkToLilahCallback={this.talkToLilah}/>
+
           </div>
         </div>
         <GameWonModal gameService={this.gameService} gameOver={this.state.gameOver} gameStatus={this.state.gameStatus}/>

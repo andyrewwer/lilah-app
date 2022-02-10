@@ -11,23 +11,23 @@
 }
 
 .lilah-button {
-	box-shadow: 0px 10px 14px -7px #3e7327;
-	background:linear-gradient(to bottom, #77b55a 5%, #489c1d 100%);
-	background-color:#77b55a;
+	box-shadow: 0px 10px 14px -7px #ccc;
+	background-color: lavender;
 	border-radius:4px;
-	border:1px solid #4b8f29;
+	border:1px solid #ccc;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:#666;
 	font-family:Arial;
 	font-size:13px;
 	font-weight:bold;
 	padding:6px 12px;
+  width: 80px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #5b8a3c;
+	text-shadow:0px 1px 0px #ccc;
 }
 
 .lilah-button:hover {
-	background:linear-gradient(to bottom, #489c1d 5%, #77b55a 100%);
-	background-color:#489c1d;
+	background-color: #ccc;
+  color: #eee;
 }
