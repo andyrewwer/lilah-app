@@ -26,9 +26,10 @@ export default class DrinkWaterGame extends Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       let newState = this.gameService.regularUpdate();
-      if (newState.alert !== 'none') {
+      if (this.state.alert === 'lilah-no-pet') {
+        this.gameService.setAlert('none');
+        newState.alert = 'none'
       }
-      newState.alert = 'none'
       this.setState(newState);
     }, 500);
   }
@@ -91,6 +92,9 @@ export default class DrinkWaterGame extends Component {
           </div>
         </div>
         <GameWonModal gameService={this.gameService} gameOver={this.state.gameOver} gameStatus={this.state.gameStatus}/>
+        {(this.state.alert === 'lilah-no-pet') && <div className="lilah-not-close-enough-alert">
+          <h2> LILAH IS NOT CLOSE ENOUGH TO PET </h2>
+        </div>}
       </React.Fragment>
     );
   }

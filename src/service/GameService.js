@@ -28,7 +28,7 @@ class GameService {
     if (Math.abs(this.playerPos - this.lilahPos) < 15) {
       this.loveCurrent += 3;
     } else {
-      this.alert = 'Lilah is too far away :('
+      this.alert = 'lilah-no-pet'
       console.log('she\'s too far away!')
     }
     // TODO Maybe only able to do this when she's within X number of squares of you?
@@ -40,13 +40,13 @@ class GameService {
   }
 
   talkToLilah() {
-    this.loveCurrent += 0.25;
+    this.loveCurrent += 0.65;
     if (this.loveCurrent < loveBar.targetThreshold) {
       this.lilahPos += 2.5;
     } else if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2) {
-      this.lilahPos -= 2.5
+      this.lilahPos += 0.35
     } else if (this.lilahPos <= (maxTargetLilah+minTargetLilah)/2) {
-      this.lilahPos += 2.5
+      this.lilahPos += 1.5
     }
 
   }
@@ -77,8 +77,23 @@ class GameService {
     }
   }
 
+  calculateLoveSubtraction() {
+    // love > 90 = .05
+    // love is 80 = 0.1
+    // love is 60 = 0.25
+    // love < 50 = 0.35
+  }
+
   updateLoveAndLilah() {
-    this.loveCurrent -= .35;
+    if (this.loveCurrent >= 90) {
+      this.loveCurrent -= 0.1;
+    } else if (this.loveCurrent >= 80) {
+      this.loveCurrent -= 0.15;
+    } else if (this.loveCurrent >= 60) {
+      this.loveCurrent -= 0.35;
+    } else {
+      this.loveCurrent -= 0.5;
+    }
 
     if (this.loveCurrent > loveBar.targetThreshold) {
       if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2 ) {
@@ -114,7 +129,7 @@ class GameService {
   }
 
   lilahInTargetPosition() {
-    return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah;
+    return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah && this.loveCurrent > loveBar.targetThreshold;
   }
 
   endGame(status) {
@@ -133,6 +148,10 @@ class GameService {
     this.timeRemaining = 120;
   }
 
+  setAlert(alert) {
+    this.alert = alert;
+  }
+
   getState() {
     return {
       loveCurrent: this.loveCurrent,
@@ -143,6 +162,7 @@ class GameService {
       gameOver: this.gameOver,
       timeRemaining: this.timeRemaining,
       highScore: this.highScore,
+      alert: this.alert
     }
   }
 

@@ -90,3 +90,18 @@
 .drink-water-game-title img {
   padding-left: 22px;
 }
+
+.lilah-not-close-enough-alert {
+  box-shadow: 2px 3px 1px rgb(0 0 0 / 30%);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 50%;
+  width: 200px;
+  word-wrap: break-word;
+  font-size: 12px;
+  background-color: #eee;
+  border-radius: 5px;
+  border: 1px solid grey;
+  text-align: center;
+}
