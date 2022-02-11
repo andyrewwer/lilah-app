@@ -23,11 +23,13 @@ class GameService {
     this.debugMode = false;
     this.alert = 'none';
     this.debugMode = true;
+    this.lilahAnimation = 'none';
   }
 
   petLilah() {
     if (Math.abs(this.playerPos - this.lilahPos) < 15) {
       this.loveCurrent += 3;
+      this.lilahAnimation = 'purr'+ Math.random();
     } else {
       this.alert = 'lilah-no-pet'
     }
@@ -35,19 +37,24 @@ class GameService {
 
   ignoreLilah() {
     this.loveCurrent -= 0.75;
-    this.lilahPos -= 1.25;
+    this.lilahPos -= 2.25;
   }
 
   talkToLilah() {
+    this.lilahAnimation = 'coax'+ Math.random();
     this.loveCurrent += 0.65;
-    if (this.loveCurrent < loveBar.targetThreshold) {
+    // HARD CODED
+    if (this.loveCurrent < 85) {
       this.lilahPos += 2.5;
     } else if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2) {
-      this.lilahPos += 0.35
+      this.lilahPos -= 0.75
     } else if (this.lilahPos <= (maxTargetLilah+minTargetLilah)/2) {
       this.lilahPos += 1.5
     }
+  }
 
+  movePlayer(moveLeft) {
+    this.playerPos = moveLeft ? this.playerPos - 3 : this.playerPos + 3
   }
 
   regularUpdate() {
@@ -60,9 +67,24 @@ class GameService {
     return this.getState();
   }
 
+  loveInTargetPosition() {
+    let cur = 0;
+
+    for (let i = 0; i < loveBar.thresholds.length; i ++) {
+      const threshold = loveBar.thresholds[i];
+      cur += threshold.size;
+      if (this.loveCurrent <= cur) {
+        console.log('cur >= this.loveCurrent', threshold, cur, this.loveCurrent)
+        return threshold.type === 'TARGET'
+      }
+    }
+    return false
+  }
+
   tryToDrinkWater() {
-    if (this.lilahInTargetPosition() && this.loveCurrent >= loveBar.targetThreshold) {
+    if (this.lilahInTargetPosition() && this.loveInTargetPosition()) {
       this.thirstQuenched += 3.5;
+      this.lilahAnimation = 'drink'+ Math.random();
       if (this.thirstQuenched > 99) {
         this.endGame(GAME_OVER_GAME_WON);
       }
@@ -76,33 +98,26 @@ class GameService {
     }
   }
 
-  calculateLoveSubtraction() {
-    // love > 90 = .05
-    // love is 80 = 0.1
-    // love is 60 = 0.25
-    // love < 50 = 0.35
-  }
-
   updateLoveAndLilah() {
     if (this.loveCurrent >= 90) {
-      this.loveCurrent -= 0.1;
+      this.loveCurrent -= 0.25;
     } else if (this.loveCurrent >= 80) {
-      this.loveCurrent -= 0.15;
+      this.loveCurrent -= 0.4;
     } else if (this.loveCurrent >= 60) {
-      this.loveCurrent -= 0.35;
-    } else {
       this.loveCurrent -= 0.5;
+    } else {
+      this.loveCurrent -= 1;
     }
 
-    if (this.loveCurrent > loveBar.targetThreshold) {
+    if (this.loveCurrent > 85) {
       if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2 ) {
-        this.lilahPos -= 0.9
+        this.lilahPos -= 0.1
       }
       if (this.lilahPos <= (maxTargetLilah+minTargetLilah)/2) {
-        this.lilahPos += 0.9
+        this.lilahPos += 0.1
       }
     }
-    if (this.loveCurrent < loveBar.loseThreshold) {
+    if (this.loveCurrent < loveBar.thresholds[0].size) {
       if (this.lilahPos < 0) {
         this.lilahPos = 0;
       }
@@ -112,7 +127,7 @@ class GameService {
   }
 
   checkAndResetToMax() {
-    if (this.loveCurrent < loveBar.loseThreshold) {
+    if (this.loveCurrent < loveBar.thresholds[0].size) {
       this.endGame(GAME_OVER_LOVE_TOO_LOW);
       return
     }
@@ -128,7 +143,11 @@ class GameService {
   }
 
   lilahInTargetPosition() {
-    return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah && this.loveCurrent > loveBar.targetThreshold;
+    return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah;
+  }
+
+  isLilahSad() {
+    return this.loveCurrent < 44;
   }
 
   endGame(status) {
@@ -152,6 +171,14 @@ class GameService {
     this.alert = alert;
   }
 
+  setAnimation(lilahAnimation) {
+    this.lilahAnimation = lilahAnimation;
+  }
+
+  getLilahAnimation() {
+    return this.lilahAnimation;
+  }
+
   getState() {
     return {
       loveCurrent: this.loveCurrent,
@@ -162,7 +189,8 @@ class GameService {
       gameOver: this.gameOver,
       timeRemaining: this.timeRemaining,
       highScore: this.highScore,
-      alert: this.alert
+      alert: this.alert,
+      lilahAnimation: this.lilahAnimation
     }
   }
 

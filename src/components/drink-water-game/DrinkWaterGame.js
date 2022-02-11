@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Bathroom from './bathroom/Bathroom'
 import LilahStats from './bathroom/lilah-stats/LilahStats'
 import LilahActions from './bathroom/lilah-actions/LilahActions'
+import PlayerActions from './bathroom/player-actions/PlayerActions'
 import GameOverModal from '../modals/game-over-modal/GameOverModal'
 
 const { GameService } = require('../../service/GameService.js')
@@ -26,14 +27,24 @@ export default class DrinkWaterGame extends Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       let newState = this.gameService.regularUpdate();
-      if (this.state.alert === 'lilah-no-pet') {
+      if (this.state.alert !== 'none') {
         this.gameService.setAlert('none');
-        newState.alert = 'none'
+        newState.alert = 'none';
+      }
+      if (this.state.lilahAnimation.slice(0,5) === 'drink') {
+        this.resetAnimation();
       }
       this.setState(newState);
     }, 500);
   }
 
+
+  resetAnimation() {
+    setTimeout(function() {
+      this.gameService.setAnimation('none');
+      this.setState(this.gameService.getState());
+    }.bind(this), 50);
+  }
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -46,10 +57,14 @@ export default class DrinkWaterGame extends Component {
     this.petLilah = this.petLilah.bind(this);
     this.ignoreLilah = this.ignoreLilah.bind(this);
     this.talkToLilah = this.talkToLilah.bind(this);
+    this.movePlayerLeft = this.movePlayerLeft.bind(this);
+    this.movePlayerRight = this.movePlayerRight.bind(this);
   }
 
   petLilah() {
-    this.gameService.petLilah()
+    this.gameService.petLilah();
+    this.setState(this.gameService.getState());
+    this.resetAnimation();
   }
 
   ignoreLilah() {
@@ -58,6 +73,16 @@ export default class DrinkWaterGame extends Component {
 
   talkToLilah() {
     this.gameService.talkToLilah()
+    this.setState(this.gameService.getState());
+    this.resetAnimation();
+  }
+
+  movePlayerLeft() {
+    this.gameService.movePlayer(true);
+  }
+
+  movePlayerRight() {
+    this.gameService.movePlayer(false);
   }
 
   render() {
@@ -81,6 +106,7 @@ export default class DrinkWaterGame extends Component {
           </div>
             <div className="container-player-filler"></div>
           <div className="container-player-stats">
+            <PlayerActions moveLeftCallback={this.movePlayerLeft} moveRightCallback={this.movePlayerRight}/>
           </div>
           <div className="container-player-title">
             <div className="drink-water-game-title">
@@ -88,7 +114,6 @@ export default class DrinkWaterGame extends Component {
             </div>
           </div>
           <div className="container-player-actions">
-
           </div>
         </div>
         <GameOverModal gameService={this.gameService} gameOver={this.state.gameOver} gameStatus={this.state.gameStatus}/>

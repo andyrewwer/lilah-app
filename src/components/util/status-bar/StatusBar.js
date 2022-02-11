@@ -6,28 +6,18 @@ export default class StatusBar extends Component {
 
   constructor(props) {
     super(props);
-    this.setCurrent = this.setCurrent.bind(this);
-  }
-
-  setCurrent(amount) {
-    this.setState({current: amount});
   }
 
   render() {
-
-    let loseThreshold = (this.props.loseThreshold / this.props.max * 100);
-    let targetThreshold = 100 - (this.props.targetThreshold / this.props.max * 100);
-    let middleSection = 100 - loseThreshold - targetThreshold;
-    let current = (this.props.current / this.props.max * 100);
 
     return (
       <div>
         <div className="center-balance"><span>{this.props.label}</span></div>
         <div className='balanceBar'>
-          <span className={classNames('balanceSection', {'loseSection': !this.props.loseIsYellow}, {'middleSection': this.props.loseIsYellow})} style={{'width': loseThreshold+'%'}}></span>
-          <span className={classNames('balanceSection', {'middleSection': this.props.targetPosition !== 'middle'}, {'winSection': this.props.targetPosition === 'middle'})} style={{'width': middleSection+'%'}}></span>
-          <span className={classNames('balanceSection', {'middleSection': this.props.targetPosition === 'middle'}, {'winSection': this.props.targetPosition !== 'middle'})} style={{'width': targetThreshold+'%'}}></span>
-          <div className='balanceSection current' style={{'width': current+'%'}}></div>
+          {this.props.thresholds.map((threshold,index) => (
+            <span key={index} className={classNames('balanceSection', {'loseSection': threshold.type === 'LOSE'}, {'middleSection': threshold.type === 'NONE'}, {'winSection': threshold.type === 'TARGET'})} style={{'width': threshold.size+'%'}}></span>
+          ))}
+          <div className='balanceSection current' style={{'width': this.props.current+1+'%'}}></div>
         </div>
       </div>
     );
