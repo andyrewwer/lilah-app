@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/lilah-app/static/css/main.50d7ec79.css",
-    "main.js": "/lilah-app/static/js/main.3d12f754.js",
+    "main.css": "/lilah-app/static/css/main.e2a09414.css",
+    "main.js": "/lilah-app/static/js/main.03cd71de.js",
     "static/js/787.b991909a.chunk.js": "/lilah-app/static/js/787.b991909a.chunk.js",
     "static/media/lilah-sad-300.png": "/lilah-app/static/media/lilah-sad-300.313087ddc7ae8fb97e10.png",
     "static/media/lilah-300.png": "/lilah-app/static/media/lilah-300.4bf4606d943018853188.png",
     "index.html": "/lilah-app/index.html",
-    "main.50d7ec79.css.map": "/lilah-app/static/css/main.50d7ec79.css.map",
-    "main.3d12f754.js.map": "/lilah-app/static/js/main.3d12f754.js.map",
+    "main.e2a09414.css.map": "/lilah-app/static/css/main.e2a09414.css.map",
+    "main.03cd71de.js.map": "/lilah-app/static/js/main.03cd71de.js.map",
     "787.b991909a.chunk.js.map": "/lilah-app/static/js/787.b991909a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50d7ec79.css",
-    "static/js/main.3d12f754.js"
+    "static/css/main.e2a09414.css",
+    "static/js/main.03cd71de.js"
   ]
 }
