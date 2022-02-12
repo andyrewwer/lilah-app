@@ -74,6 +74,12 @@ class GameService {
   movePlayer(moveLeft) {
     if (this.lock === 0) {
       this.playerPos = moveLeft ? this.playerPos - 3 : this.playerPos + 3
+      if (this.playerPos > 88) {
+        this.playerPos = 88;
+      }
+      if (this.playerPos < 0) {
+        this.playerPos = 0;
+      }
     }
     console.log(this.playerPos)
   }

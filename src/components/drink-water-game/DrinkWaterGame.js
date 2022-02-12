@@ -27,9 +27,8 @@ export default class DrinkWaterGame extends Component {
   8. indication of when Lila is drinking and good stuff happening
   9. THIRST QUENCHEd BAR SHOULD BE MORE OBVIOUSLY "GREEN"
 */
-
-
   componentDidMount() {
+    document.addEventListener("keydown", this._handleKeyDown.bind(this));
     this.interval = setInterval(() => {
       let newState = this.gameService.regularUpdate();
       console.log(newState.lock)
@@ -44,6 +43,13 @@ export default class DrinkWaterGame extends Component {
     }, 500);
   }
 
+  _handleKeyDown (e) {
+      if (e.keyCode === 37) {
+        this.movePlayerLeft();
+      } else if (e.keyCode === 39) {
+        this.movePlayerRight();
+      }
+    }
 
   resetAnimation() {
     setTimeout(function() {
@@ -51,7 +57,9 @@ export default class DrinkWaterGame extends Component {
       this.setState(this.gameService.getState());
     }.bind(this), 50);
   }
+
   componentWillUnmount() {
+    document.removeEventListener("keydown", this._handleKeyDown.bind(this));
     clearInterval(this.interval);
   }
 
