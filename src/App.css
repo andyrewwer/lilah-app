@@ -1,5 +1,5 @@
 html {
-  /* background-color: #282c34; */
+  background-color: lavender;
   color: black;
 }
 
@@ -7,11 +7,16 @@ html {
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 2fr;
+  justify-items: center;
 }
 
 .container-footer {
   grid-row: 2;
   display: grid;
   justify-content: center;
+}
+
+* {
+  font-family: "Arial"
 }

@@ -7,11 +7,11 @@ export default class PlayerActions extends Component {
     return (
       <React.Fragment>
         <div className="player-actions">
-          <div className="move-left">
-            <button className="player-button" onClick={this.props.moveLeftCallback}>MOVE LEFT</button>
+          <div className="brush-teeth">
+            <button className="player-button" onClick={this.props.brushTeethCallback}>Brush Teeth</button>
           </div>
-          <div className="move-right">
-            <button className="player-button" onClick={this.props.moveRightCallback}>MOVE RIGHT</button>
+          <div className="toilet-button">
+            <button className="player-button" onClick={this.props.toiletCallback}>Relieve Yourself</button>
           </div>
         </div>
       </React.Fragment>

@@ -1,62 +1,57 @@
-import './LilahStats.css';
+import './PlayerStats.css';
 import React, { Component } from 'react'
 import StatusBar from '../../../util/status-bar/StatusBar'
 
 // TODO move to external configs
 // TODO make this more generic to allow more bars and maybe colors
-  export const loveBar =
+  export const toiletBar =
   {
     max: 100,
     thresholds: [
+      {
+        type: 'NONE',
+        size: 70
+      },
+      {
+        type: 'TARGET',
+        size: 21
+      },
       {
         type: 'LOSE',
-        size: 20
-      },
-      {
-        type: 'NONE',
-        size: 50
-      },
-      {
-        type: 'TARGET',
-        size: 15 // hard coded pair in gameservice.js
-      },
-      {
-        type: 'NONE',
-        size: 15 // PROBBALY NOT BEST WAY BUT WORKS FOR NOW
-      },
-
+        size: 9 // too much poop
+      }
     ],
-    label: 'Love-o-meter'
+    label: 'toilet-o-meter'
   }
 
-  export const thirstBar =
+  export const teethBar =
   {
     max: 100,
     thresholds: [
       {
         type: 'NONE',
-        size: '95'
+        size: '96'
       },
       {
         type: 'TARGET',
-        size: '5'
+        size: '4'
       }
     ],
-    label: 'Thirst Quench'
+    label: 'Teeth brushed'
   }
 
 
-export default class LilahStatus extends Component {
+export default class PlayerStats extends Component {
 
   render() {
     return (
       <React.Fragment>
           <div className="status-bars">
             <div className="status-bar">
-              <StatusBar max={loveBar.max} current={this.props.loveCurrent} thresholds={loveBar.thresholds} label={loveBar.label}/>
+              <StatusBar max={toiletBar.max} current={this.props.toiletCurrent} thresholds={toiletBar.thresholds} label={toiletBar.label}/>
             </div>
             <div className="status-bar">
-              <StatusBar max={thirstBar.max} current={this.props.thirstQuenched} thresholds={thirstBar.thresholds} label={thirstBar.label} />
+              <StatusBar max={teethBar.max} current={this.props.teethCurrent} thresholds={teethBar.thresholds} label={teethBar.label} />
             </div>
 
           </div>

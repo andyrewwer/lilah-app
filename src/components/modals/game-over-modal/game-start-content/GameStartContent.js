@@ -17,12 +17,15 @@ export default class GameStartContent extends Component {
             <div className="circle-around-lilah-start-img"></div>
           </div>
           <div className="title-two">
-            <h2 className="game-start-title"> Can you quench Lilah's thirst? </h2>
+            <h2 className="game-start-title"> Can you quench Lilah's thirst whilst getting ready for bed? </h2>
           </div>
           <div className="start-content">
+            <span> To win this game you will need to:</span>
             <ul>
+              <li> Brush your teeth </li>
+              <li> Relieve yourself </li>
               <li> Try to make Lilah feel loved (enough to make her willing to drink water) </li>
-              <li> Convince Lilah to leave you and head to the sink and drink water </li>
+              <li> Convince Lilah to   head to the sink and drink water </li>
             </ul>
           </div>
           <div className="start-game-button">

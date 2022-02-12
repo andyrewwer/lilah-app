@@ -1,18 +1,16 @@
-.player-actions {
+.player-move-actions {
     margin: 0 auto;
     box-sizing: border-box;
     width: 180px;
-    height: 180px;
     font: bold 20px "Courier";
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-.player-button {
+.player-move-button {
 	box-shadow: 0px 10px 14px -7px #ccc;
-	background-color: var(--player-bg-colour);
+  background-color: #FDEDF4;
 	border-radius:4px;
 	border:1px solid #ccc;
 	display:inline-block;
@@ -27,7 +25,7 @@
 	text-shadow:0px 1px 0px #ccc;
 }
 
-.player-button:hover {
+.player-move-button:hover {
 	background-color: #ccc;
   color: #eee;
 }

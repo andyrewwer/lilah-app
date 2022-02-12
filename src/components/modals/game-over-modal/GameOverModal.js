@@ -12,7 +12,7 @@ export default class GameOverModal extends Component {
 
   render () {
     const closeModal = () => {
-      this.props.gameService.startNewGame(50, 0, 10, 80);
+      this.props.gameService.startNewGame(50, 0, 70, 80);
     }
     let timeRemaining = this.props.gameService.getState()['timeRemaining'];
     let highScore = this.props.gameService.getState()['highScore'];
@@ -28,8 +28,8 @@ export default class GameOverModal extends Component {
           {GAME_NOT_STARTED === this.props.gameStatus ?
             <GameStartContent closeModalCallback={closeModal}/> :
             GAME_OVER_GAME_WON === this.props.gameStatus ?
-             <GameWonContent timeRemaining={convertIntToTime(timeRemaining)} highScore={convertIntToTime(highScore)} closeModalCallback={closeModal}/> :
-             <GameLostContent timeRemaining={convertIntToTime(timeRemaining)} highScore={convertIntToTime(highScore)} closeModalCallback={closeModal} status={this.props.gameStatus} thirstQuenched={this.props.gameService.getState()['thirstQuenched']}/>
+             <GameWonContent gameService={this.props.gameService} highScore={convertIntToTime(highScore)} closeModalCallback={closeModal}/> :
+             <GameLostContent gameService={this.props.gameService} highScore={convertIntToTime(highScore)} closeModalCallback={closeModal} status={this.props.gameStatus} />
         }
         </Modal>
       </React.Fragment>

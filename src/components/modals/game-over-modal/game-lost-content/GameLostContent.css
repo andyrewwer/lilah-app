@@ -1,9 +1,9 @@
 .game-lost-container {
   width: 400px;
   display: grid;
-  grid-template-rows: 225px 50px 20px 20px 50px;
+  grid-template-rows: 225px 50px 100px 25px 50px;
   grid-gap: 15px;
-  margin-top: 50px;
+  margin-top: 20px;
   justify-content: center;
   justify-items: center;
   align-items: center;
@@ -15,6 +15,10 @@
   margin-top: 75px;
   height: 225px;
   width: 225px;
+}
+
+.score-lost {
+  margin: 0
 }
 
 .circle-around-lilah-lost-img {
@@ -34,7 +38,7 @@
 h2.game-lost-title {
   margin-top: 45px;
   color: rgb(220 20 60);
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .red {
@@ -42,6 +46,10 @@ h2.game-lost-title {
   font-weight: 800;
 }
 
+.score-lost-total {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
 button.play-again-lost-button {
   border-radius: 10px;
   background-color: #CD5C5C; /* Green */

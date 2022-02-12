@@ -5,19 +5,17 @@ export default class LilahActions extends Component {
 
   render() {
     return (
-      <React.Fragment>
         <div className="actions">
           <div className="pet">
-            <button className="lilah-button" onClick={this.props.petLilahCallback}>PET</button>
+            <button className="lilah-button" onClick={this.props.petLilahCallback}>Pet Lilah</button>
           </div>
           <div className="ignore">
-            <button className="lilah-button" onClick={this.props.ignoreLilahCallback}>IGNORE</button>
+            <button className="lilah-button" onClick={this.props.ignoreLilahCallback}>Ignore Lilah</button>
           </div>
           <div className="ignore">
-            <button className="lilah-button" onClick={this.props.talkToLilahCallback}>COAX</button>
+            <button className="lilah-button" onClick={this.props.talkToLilahCallback}>Coax Lilah </button>
           </div>
         </div>
-      </React.Fragment>
     );
   }
 }

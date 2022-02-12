@@ -11,7 +11,7 @@ export default class StatusBar extends Component {
   render() {
 
     return (
-      <div>
+      <div className="stats-container">
         <div className="center-balance"><span>{this.props.label}</span></div>
         <div className='balanceBar'>
           {this.props.thresholds.map((threshold,index) => (

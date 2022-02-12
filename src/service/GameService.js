@@ -1,10 +1,10 @@
 import {loveBar} from '../components/drink-water-game/bathroom/lilah-stats/LilahStats'
 
-export const maxTargetLilah = 33;
-export const minTargetLilah = 19;
-export const minLilahPetRange = 58;
+export const sinkPosMaxRight = 33;
+export const sinkPosMaxLeft = 19;
 export const GAME_OVER_OUT_OF_TIME = 'GAME_OVER_OUT_OF_TIME';
 export const GAME_OVER_LOVE_TOO_LOW = 'GAME_OVER_LOVE_TOO_LOW';
+export const GAME_OVER_TOILET_TOO_HIGH = 'GAME_OVER_TOILET_TOO_HIGH';
 export const GAME_OVER_GAME_WON = 'GAME_OVER_GAME_WON';
 export const GAME_NOT_STARTED = 'GAME_NOT_STARTED';
 
@@ -24,14 +24,25 @@ class GameService {
     this.alert = 'none';
     this.debugMode = true;
     this.lilahAnimation = 'none';
+    this.teethCurrent = 0;
+    this.toiletCurrent = 0;
+    this.lock = 0;
   }
 
   petLilah() {
-    if (Math.abs(this.playerPos - this.lilahPos) < 15) {
-      this.loveCurrent += 3;
-      this.lilahAnimation = 'purr'+ Math.random();
+    if (this.lock === 0) {
+      if (Math.abs(this.playerPos - this.lilahPos) < 15) {
+        this.loveCurrent += 6+Math.floor(Math.random() * 4);
+        this.lilahAnimation = 'purr'+ Math.random();
+        this.lock += 1.5;
+        if (this.isLilahSad()) {
+          this.loveCurrent += 10;
+        }
+      } else {
+        this.alert = 'lilah-no-pet'
+      }
     } else {
-      this.alert = 'lilah-no-pet'
+      console.log('locked out', this.lock)
     }
   }
 
@@ -45,16 +56,45 @@ class GameService {
     this.loveCurrent += 0.65;
     // HARD CODED
     if (this.loveCurrent < 85) {
-      this.lilahPos += 2.5;
-    } else if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2) {
+      if (this.lilahPos < this.playerPos) {
+        this.lilahPos += 2.5;
+      } else {
+        this.lilahPos -= 2.5;
+      }
+    } else if (this.lilahPos >= (sinkPosMaxRight+sinkPosMaxLeft)/2) {
       this.lilahPos -= 0.75
-    } else if (this.lilahPos <= (maxTargetLilah+minTargetLilah)/2) {
+    } else if (this.lilahPos <= (sinkPosMaxRight+sinkPosMaxLeft)/2) {
       this.lilahPos += 1.5
     }
   }
 
   movePlayer(moveLeft) {
-    this.playerPos = moveLeft ? this.playerPos - 3 : this.playerPos + 3
+    if (this.lock === 0) {
+      this.playerPos = moveLeft ? this.playerPos - 3 : this.playerPos + 3
+    }
+    console.log(this.playerPos)
+  }
+
+  toiletAction() {
+    if (this.lock === 0) {
+      if (this.playerInFrontOfToilet()) {
+        this.toiletCurrent += 7+Math.floor(Math.random() * 6);
+        this.lock += 1.5;
+      } else {
+        this.alert = 'player-not-at-toilet'
+      }
+    }
+  }
+
+  brushTeeth() {
+    if (this.lock === 0) {
+      if (this.playerInFrontOfSink()) {
+        this.teethCurrent += 5+Math.floor(Math.random() * 6);
+        this.lock += 1.5;
+      } else {
+        this.alert = 'player-not-at-sink'
+      }
+    }
   }
 
   regularUpdate() {
@@ -62,6 +102,7 @@ class GameService {
       this.updateLoveAndLilah();
       this.tryToDrinkWater();
       this.checkAndResetToMax();
+      this.checkWinCondition();
       this.updateTimer();
     }
     return this.getState();
@@ -69,12 +110,10 @@ class GameService {
 
   loveInTargetPosition() {
     let cur = 0;
-
     for (let i = 0; i < loveBar.thresholds.length; i ++) {
       const threshold = loveBar.thresholds[i];
       cur += threshold.size;
       if (this.loveCurrent <= cur) {
-        console.log('cur >= this.loveCurrent', threshold, cur, this.loveCurrent)
         return threshold.type === 'TARGET'
       }
     }
@@ -82,12 +121,15 @@ class GameService {
   }
 
   tryToDrinkWater() {
-    if (this.lilahInTargetPosition() && this.loveInTargetPosition()) {
+    if (this.lilahInFrontOfSink() && this.loveInTargetPosition()) {
       this.thirstQuenched += 3.5;
       this.lilahAnimation = 'drink'+ Math.random();
-      if (this.thirstQuenched > 99) {
-        this.endGame(GAME_OVER_GAME_WON);
-      }
+    }
+  }
+
+  checkWinCondition() {
+    if (this.thirstQuenched > 99 && this.toiletCurrent > 68 && this.teethCurrent > 96) {
+      this.endGame(GAME_OVER_GAME_WON);
     }
   }
 
@@ -99,35 +141,45 @@ class GameService {
   }
 
   updateLoveAndLilah() {
-    if (this.loveCurrent >= 90) {
-      this.loveCurrent -= 0.25;
-    } else if (this.loveCurrent >= 80) {
-      this.loveCurrent -= 0.4;
+    if (this.lock >= 0.5) {
+      this.lock -= 0.5;
+    }
+    if (this.loveCurrent >= 80) {
+      this.loveCurrent -= 0.2;
     } else if (this.loveCurrent >= 60) {
+      this.loveCurrent -= 0.25;
+    } else if (this.loveCurrent >= 44){
       this.loveCurrent -= 0.5;
-    } else {
+    } else if (this.loveCurrent >= 20){
       this.loveCurrent -= 1;
+      this.lilahPos -= 3;
+    } else {
+      this.lilahPos -= 5;
     }
 
     if (this.loveCurrent > 85) {
-      if (this.lilahPos >= (maxTargetLilah+minTargetLilah)/2 ) {
+      if (this.lilahPos >= (sinkPosMaxRight+sinkPosMaxLeft)/2 ) {
         this.lilahPos -= 0.1
       }
-      if (this.lilahPos <= (maxTargetLilah+minTargetLilah)/2) {
+      if (this.lilahPos <= (sinkPosMaxRight+sinkPosMaxLeft)/2) {
         this.lilahPos += 0.1
       }
     }
+
     if (this.loveCurrent < loveBar.thresholds[0].size) {
       if (this.lilahPos < 0) {
+        this.endGame(GAME_OVER_LOVE_TOO_LOW);
         this.lilahPos = 0;
       }
-      this.endGame(GAME_OVER_LOVE_TOO_LOW);
       return
+    }
+    if (this.toiletCurrent > 91) {
+      this.endGame(GAME_OVER_TOILET_TOO_HIGH);
     }
   }
 
   checkAndResetToMax() {
-    if (this.loveCurrent < loveBar.thresholds[0].size) {
+    if (this.lilahPos <= 1) {
       this.endGame(GAME_OVER_LOVE_TOO_LOW);
       return
     }
@@ -142,8 +194,15 @@ class GameService {
     }
   }
 
-  lilahInTargetPosition() {
-    return this.lilahPos > minTargetLilah && this.lilahPos < maxTargetLilah;
+  lilahInFrontOfSink() {
+    return this.lilahPos > sinkPosMaxLeft && this.lilahPos < sinkPosMaxRight;
+  }
+
+  playerInFrontOfSink() {
+    return this.playerPos > sinkPosMaxLeft && this.playerPos < sinkPosMaxRight;
+  }
+  playerInFrontOfToilet() {
+    return this.playerPos > 66 && this.playerPos < 82;
   }
 
   isLilahSad() {
@@ -151,7 +210,6 @@ class GameService {
   }
 
   endGame(status) {
-    // this.lilahPos = 40;
     this.gameOver = true;
     this.gameStatus = status;
   }
@@ -165,6 +223,8 @@ class GameService {
     this.gameStatus = null;
     this.timeRemaining = 120;
     this.debugMode = false;
+    this.teethCurrent = 0;
+    this.toiletCurrent = 0;
   }
 
   setAlert(alert) {
@@ -179,6 +239,9 @@ class GameService {
     return this.lilahAnimation;
   }
 
+  getTimeRemaining() {
+    return this.timeRemaining;
+  }
   getState() {
     return {
       loveCurrent: this.loveCurrent,
@@ -190,8 +253,15 @@ class GameService {
       timeRemaining: this.timeRemaining,
       highScore: this.highScore,
       alert: this.alert,
-      lilahAnimation: this.lilahAnimation
+      lilahAnimation: this.lilahAnimation,
+      teethCurrent: this.teethCurrent,
+      toiletCurrent: this.toiletCurrent,
+      lock: this.lock
     }
+  }
+
+  calculateScore() {
+    return (this.thirstQuenched + this.teethCurrent + this.toiletCurrent + this.timeRemaining/6).toFixed(0);
   }
 
 }

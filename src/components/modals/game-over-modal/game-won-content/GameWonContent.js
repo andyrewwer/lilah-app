@@ -16,8 +16,14 @@ export default class GameWonContent extends Component {
           <div className="title">
             <h2 className="game-won-title"> YOU WIN </h2>
           </div>
-          <div className="score-won">
-            <span className="score-won"> Score: <span className="green"> {this.props.timeRemaining} remaining</span></span>
+          <div className="score-lost">
+            <p className="score-lost"> Time Remaining: <span className="red"> {this.props.gameService.getTimeRemaining()} </span></p>
+            <p className="score-lost"> Thirst Quenched: <span className="red"> {this.props.gameService.getState()['thirstQuenched']}% </span></p>
+            <p className="score-lost"> Teeth brushed: <span className="red"> {this.props.gameService.getState()['teethCurrent']}% </span></p>
+            <p className="score-lost"> Toilet need relieved: <span className="red"> {this.props.gameService.getState()['toiletCurrent']}% </span></p>
+          </div>
+          <div className="score-lost-total">
+            <span className="score-lost-total"> Total Score: <span className="red"> {this.props.gameService.calculateScore()} </span></span>
           </div>
           <div className="play-again-button">
             <button className="play-again-won-button" onClick={this.props.closeModalCallback}> Play Again </button>

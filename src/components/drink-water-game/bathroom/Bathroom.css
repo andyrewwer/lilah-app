@@ -13,11 +13,11 @@
 }
 
 @keyframes Purr {
-  0%, 40%, 80% {
-    transform: rotate(-8deg);
+  0%, 50% {
+    transform: rotate(-20deg);
   }
-  20%, 60%, 100% {
-    transform: rotate(8deg);
+  25%, 75% {
+    transform: rotate(20deg);
   }
 }
 
@@ -177,10 +177,15 @@
 }
 
 .mask {
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: right;
+  padding-right: 100px;
   grid-row: 4;
   background-color: lightgrey;
   height: 24px;
-  width: 636px;
+  width: 621px;
   position: relative;
   bottom: 256px;
+  font-family: 'Brush Script MT';
 }

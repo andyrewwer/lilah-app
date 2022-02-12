@@ -2,6 +2,7 @@ import './Bathroom.css';
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFemale, faMale } from '@fortawesome/free-solid-svg-icons'
+import { convertIntToTime} from '../../util/Styles.js'
 
 const lilah = require('../../../assets/lilah-300.png');
 const lilah_sad = require('../../../assets/lilah-sad-300.png');
@@ -14,13 +15,13 @@ export default class Bathroom extends Component {
   }
 
   render() {
-    let lilahBottom = this.props.gameService.lilahInTargetPosition() && this.props.gameService.loveInTargetPosition() ? '60px' : '-30px';
+    let lilahBottom = this.props.gameService.lilahInFrontOfSink() && this.props.gameService.loveInTargetPosition() ? '60px' : '-30px';
     let img = this.props.gameService.isLilahSad() ? lilah_sad : lilah
     const FEMALE = true;
     return (
       <React.Fragment>
         <div className="lilah-container">
-        <div className="mask"></div>
+        <div className="mask">{convertIntToTime(this.props.gameService.getTimeRemaining())} remaining</div>
           <div className="counter">
             <div className="sink">
               <div className="sink-hole"></div>

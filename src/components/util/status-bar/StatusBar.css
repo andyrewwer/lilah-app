@@ -4,6 +4,12 @@
   --speed: .6s;
 }
 
+.stats-container {
+  display: flex;
+  padding-right: 10px;
+  align-items: center;
+}
+
 .balanceBar {
   height: 14px;
   border: 1px #ccc solid;
@@ -11,9 +17,6 @@
   width: 90%;
   box-shadow: 1px 4px 8px -3px rgba(44, 62, 80, 1);
   overflow: hidden;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .balanceSection {
@@ -60,4 +63,11 @@
 .center-balance {
   display: flex;
   justify-content: center;
+  width: 60px;
+}
+
+.center-balance span {
+  font-family: 'Courier New';
+  font-size: 0.8rem;
+
 }
