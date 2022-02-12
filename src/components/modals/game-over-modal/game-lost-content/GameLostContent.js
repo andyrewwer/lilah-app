@@ -31,7 +31,7 @@ export default class GameLostContent extends Component {
             { this.getMessage(this.props.status)} </h2>
           </div>
           <div className="score-lost">
-            <p className="score-lost"> Time Remaining: <span className="red"> {this.props.timeRemaining} </span></p>
+            <p className="score-lost"> Time Remaining: <span className="red"> {this.props.timeRemaining} seconds </span></p>
             <p className="score-lost"> Thirst Quenched: <span className="red"> {this.props.gameService.getState()['thirstQuenched']}% </span></p>
             <p className="score-lost"> Teeth brushed: <span className="red"> {this.props.gameService.getState()['teethCurrent']}% </span></p>
             <p className="score-lost"> Toilet need relieved: <span className="red"> {this.props.gameService.getState()['toiletCurrent']}% </span></p>

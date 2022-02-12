@@ -32,7 +32,7 @@ class GameService {
   petLilah() {
     if (this.lock === 0) {
       if (Math.abs(this.playerPos - this.lilahPos) < 15) {
-        this.loveCurrent += 6+Math.floor(Math.random() * 4);
+        this.loveCurrent += 7+Math.floor(Math.random() * 4);
         this.lilahAnimation = 'purr'+ Math.random();
         this.lock += 1.5;
         if (this.isLilahSad()) {
@@ -54,6 +54,9 @@ class GameService {
   talkToLilah() {
     this.lilahAnimation = 'coax'+ Math.random();
     this.loveCurrent += 0.65;
+    if (this.isLilahSad) {
+      this.loveCurrent += 1;
+    }
     // HARD CODED
     if (this.loveCurrent < 85) {
       if (this.lilahPos < this.playerPos) {
@@ -191,6 +194,13 @@ class GameService {
     }
     if (this.lilahPos < 0) {
       this.lilahPos = 0;
+    }
+    if (this.thirstQuenched > 100) {
+      this.thirstQuenched = 100;
+    }
+
+    if (this.teethCurrent > 100) {
+      this.teethCurrent = 100;
     }
   }
 
