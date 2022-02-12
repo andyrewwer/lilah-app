@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/lilah-app/static/css/main.83da84b2.css",
-    "main.js": "/lilah-app/static/js/main.fe0e6785.js",
+    "main.js": "/lilah-app/static/js/main.242f77b1.js",
     "static/js/787.b991909a.chunk.js": "/lilah-app/static/js/787.b991909a.chunk.js",
     "static/media/lilah-sad-300.png": "/lilah-app/static/media/lilah-sad-300.313087ddc7ae8fb97e10.png",
     "static/media/lilah-300.png": "/lilah-app/static/media/lilah-300.4bf4606d943018853188.png",
     "index.html": "/lilah-app/index.html",
     "main.83da84b2.css.map": "/lilah-app/static/css/main.83da84b2.css.map",
-    "main.fe0e6785.js.map": "/lilah-app/static/js/main.fe0e6785.js.map",
+    "main.242f77b1.js.map": "/lilah-app/static/js/main.242f77b1.js.map",
     "787.b991909a.chunk.js.map": "/lilah-app/static/js/787.b991909a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.83da84b2.css",
-    "static/js/main.fe0e6785.js"
+    "static/js/main.242f77b1.js"
   ]
 }
